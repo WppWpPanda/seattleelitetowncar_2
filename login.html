@@ -1,0 +1,331 @@
+<style>
+    .form-control.error
+    {
+        border:1px solid red !important;
+    }
+
+    label.error
+    {
+        display: none !important;
+    }
+    .valid-error{color:red;display:none;text-align:left;width:100%;box-sizing:border-box;padding:5px 0}
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="description" content="">
+        <meta name="keywords" content="">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sign In</title>
+        <link rel="stylesheet" type="text/css" href="theme/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="theme/css/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="theme/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="theme/css/animate.min.css">
+        <link rel="stylesheet" href="theme/js/sweetalert/sweetalert2.min.css">
+        <link rel="stylesheet" type="text/css" href="theme/css/style.css">
+                <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-9178117-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+                    </head>
+    <body>
+        
+        <nav class="navbar navbar-default my-navbar">
+    <!--<nav class="navbar navbar-default">-->
+    <div class="content-wrap">
+        <!-- Brand and toggle -->
+        <div class="navbar-header my-navbar__header">
+            <!--navbar brand-->
+            <a class="navbar-brand brand" href="index.html" title="Seattle limo & town car service"><img class="brand__img" src="theme/images/logo_n.png" alt="Seattle limo & town car service"></a>
+            <!--colapsed phones-->
+            <!--toggle menu button-->
+            <button type="button" class="navbar-toggle collapsed my-toggle" data-toggle="collapse"
+                    data-target="#navbar-limousine" aria-expanded="false">
+                <div></div>
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="phones visible-xs">
+                <li class="phones__item">
+                    <!--<span class="phones__desc">toll free</span>-->
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <a class="phones__link" href="tel:4253726570" class="tel-free">4253726570</a>
+                </li>
+                <li class="phones__item">
+                    <!--<span class="phones__desc">local</span>-->
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <a class="phones__link" href="tel:206-453-9128">206-453-9128</a>
+                </li>
+            </ul>
+        </div>
+        <!--navbar collapsed-->
+        <div class="collapse navbar-collapse my-collapse" id="navbar-limousine">
+            <ul class="nav navbar-nav menu">
+                            <li class="menu__item  ">
+                    <a class="menu__link " href="index.html"  >Home</a>
+                                    </li>
+                            <li class="menu__item  ">
+                    <a class="menu__link " href="quote.php.html"  >Quote</a>
+                                    </li>
+                            <li class="menu__item  ">
+                    <a class="menu__link " href="reservation.php.html"  >Reservation</a>
+                                    </li>
+                            <li class="menu__item  dropdown  ">
+                    <a class="menu__link  dropdown-toggle " href="fleet.php.html"   role="button" aria-haspopup="true"
+                                                                                                                                                                                                                        aria-expanded="false" >Our fleet</a>
+                                            <ul class="dropdown-menu my-dropdown">
+                                                        <li>
+                                <a class="my-dropdown__item" href="fleet-sedans.php.html" >Luxury Sedans</a>
+                            </li>
+                                                        <li>
+                                <a class="my-dropdown__item" href="fleet-suvs.php.html" >Luxury Suvs</a>
+                            </li>
+                                                        <li>
+                                <a class="my-dropdown__item" href="fleet-vans.php.html" >Luxury Van</a>
+                            </li>
+                                                        <li>
+                                <a class="my-dropdown__item" href="fleet-limos.php.html" >Luxury Limousines</a>
+                            </li>
+                                                        <li>
+                                <a class="my-dropdown__item" href="fleet-buses.php.html" >Luxury Buses</a>
+                            </li>
+                                                    </ul>
+                                    </li>
+                            <li class="menu__item  ">
+                    <a class="menu__link " href="services.php.html"  >Services</a>
+                                    </li>
+                            <li class="menu__item  ">
+                    <a class="menu__link " href="rates.php.html"  >Rates</a>
+                                    </li>
+                            <li class="menu__item  ">
+                    <a class="menu__link " href="faq.php.html"  >FAQ</a>
+                                    </li>
+                            <li class="menu__item  ">
+                    <a class="menu__link " href="reviews.php.html"  >Reviews</a>
+                                    </li>
+                            <li class="menu__item  ">
+                    <a class="menu__link " href="contact.php.html"  >Contact us</a>
+                                    </li>
+                    </ul>
+    
+            <ul class="phones hidden-xs">
+                <li class="phones__item">
+                    <!--<span class="phones__desc">toll free</span>-->
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <a class="phones__link" href="tel:4253726570" class="tel-free">4253726570</a>
+                </li>
+                <li class="phones__item">
+                    <!--<span class="phones__desc">local</span>-->
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <a class="phones__link" href="tel:206-453-9128">206-453-9128</a>
+                </li>
+            </ul>
+            <div class="top_login">
+                             <a href="login.html">Sign In</a>
+                 <a href="reg.php.html">Registration</a>
+                        </div>
+        </div>
+
+        <!--end collapsed-->
+    </div>
+</nav>
+        <section class="">
+    <div class="content-wrap">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="header-short">
+                        <h2 class="header-short__text">Sign In</h2>
+                        <div class="header-short__line"></div>
+                        <div class="header-short__line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap bg-light">
+        <div class="content-wrap content-wrap--top">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form method="post" id="auth-form" role="form" action="login.html">
+                            <div class="row">
+                                <div class="col-sm-offset-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="login" class="sr-only"></label>
+                                        <input id="login" type="text" class="form-control required" placeholder="E-mail" name="login">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="sr-only"></label>
+                                        <input id="password" type="password" class="form-control required" placeholder="Password" name="pass">
+                                    </div>
+                                    <div class="form-group">
+                                        <a href="login/password-recovery.html">Forgot Password?</a>
+                                    </div>
+                                </div>
+
+                                <div class=" col-sm-offset-3 col-sm-6">
+                                    <div class="form-group">
+                                        <button type="submit" value="" class="btn-yellow contact-form__btn">submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <footer >
+       <div>
+       <div class="wrap">
+           <div class="contacts">
+               <div class="container content-wrapper">
+                   <div class="row">
+                       <div class="col-sm-4">
+                           <h3 class="contacts__title">Address</h3>
+                           <hr class="contacts__line">
+                           <address>
+
+                               <strong>Limousine Service</strong><br>
+                               <span><img src="theme/images/pin-icon.png"></span>16220 NE 12TH CT,<br> BELLEVUE WA 98008
+                           </address>
+                       </div>
+                       <div class="col-sm-5">
+                           <h3 class="contacts__title">Contact Us</h3>
+                           <hr class="contacts__line">
+                           <address>
+                               <strong>Reservations</strong><br>
+                               <span><img src="theme/images/phone-icon.png"></span><a
+                                   href="tel:4253726570">4253726570</a><br>
+                               <span><img src="theme/images/phone-icon.png"></span></i><a
+                                   href="tel:206-453-9128">206-453-9128</a><br>
+                               <span><img src="theme/images/mail-icon.png"></span><a href="mailto:INFO@SEATTLEELITETOWNCAR.COM">INFO@SEATTLEELITETOWNCAR.COM</a>
+                           </address>
+                       </div>
+                       <div class="col-sm-3">
+                           <h3 class="contacts__title">Follow Us</h3>
+                           <hr class="contacts__line">
+                           <div class="social-icons">
+                               <div class="icons">
+                                   <a href="https://www.facebook.com/elitetowncar/" target="_blank">
+                                       <i class="fa fa-facebook"></i>
+                                   </a>
+                               </div>
+
+                               <div class="icons">
+                                   <a href="https://plus.google.com/+Seattleelitetowncar" target="_blank">
+                                       <i class="fa fa-google-plus"></i>
+                                   </a>
+                               </div>
+
+                               <div style="margin-top:8px;" id="yelp-biz-badge-plain-i8xK490z_vPddqxtXhx5vQ"><a href="http://yelp.com/biz/seattle-elite-town-car-bellevue-5?utm_medium=badge_button&amp;utm_source=biz_review_badge" target="_blank">Check out Seattle Elite Town Car on Yelp</a></div>    <script>(function(d, t) {var g = d.createElement(t);var s = d.getElementsByTagName(t)[0];g.id = "yelp-biz-badge-script-plain-i8xK490z_vPddqxtXhx5vQ";g.src = "//yelp.com/biz_badge_js/en_US/plain/i8xK490z_vPddqxtXhx5vQ.js";s.parentNode.insertBefore(g, s);g.onload = function() {document.querySelector('#yelp-biz-badge-plain-i8xK490z_vPddqxtXhx5vQ a').setAttribute('target', '_blank');}}(document, 'script'));</script>
+                           </div>
+
+                           <a href="quote.php.html" class="btn btn-yellow">Get a quote</a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="copyright">
+               <div class="container content-wrapper">
+                   <div class="row">
+                       <div class="col-sm-12">
+                           <p class="text-center"><a target="_blank" href="http://webandad.com/">&copy; 2016 Limousine services . All right reserved. 
+                                   Powered by webandad</a></p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</footer>         <script src="theme/js/libs/jquery.min.js"></script>
+         <script src="theme/js/libs/bootstrap.min.js"></script>
+         <script src="theme/js/libs/jquery.viewportchecker.min.js"></script>
+         <script src="theme/js/libs/slick.min.js"></script>
+
+         <!-- build:js -->
+         
+         <script src="theme/js/main.js"></script>
+
+         <script src="theme/js/jquery.validate.min.js"></script>
+<script src="theme/js/sweetalert/sweetalert2.min.js"></script>
+
+
+<script>
+
+    $('#reg-form').validate({
+        submitHandler: function(form) {
+            $.ajax({
+                url: 'https://www.seattleelitetowncar.com/reg',
+                type: 'post',
+                data: $(form).serialize(),
+                dataType: 'json',
+                beforeSend: function(){
+                    $('#captcha-error').hide();
+                    $('#total-error').hide();
+                    $(form).find('button').prop('disabled', true).find('span').text('Sending...');
+                },
+                success: function(data){
+                    console.log(data);
+
+                    if (!data['error']) {
+                        $(form).find('input[type=text], input[type=email], input[type=tel], textarea, select').val('');
+                        $(form).find('label.active').removeClass('active');
+                        swal(
+                            'Thank you!',
+                            'Your registration is complete. <a href="reservation.php.html">Make a reservation</a',
+                            'success'
+                        );
+                    }
+                    else
+                    {
+                        if(data['busy']){
+                            swal(
+                                'Error!',
+                                'This email/account already exists',
+                                'error'
+                            );
+                        }
+                    }
+                },
+                error: function(data){
+                    if (data.responseJSON && data.responseJSON['g-recaptcha-response']) {
+                        $('#captcha-error').show();
+                    }  else {
+                        $('#total-error').show();
+                    }
+                },
+                complete: function(){
+                    // Can't reload multiplay captchas with reset
+                    // Solution from here https://wordpress.org/support/topic/reset-recaptcha-multiple-recaptcha-in-single-page/
+                    var recaptcha_iframe = $(form).find('.g-recaptcha iframe').eq(0);
+                    var src = recaptcha_iframe.attr('src');
+                    recaptcha_iframe.attr('src', src);
+                    $(form).find('button').prop('disabled', false).find('span').text('Submit');
+                }
+            });
+
+        }
+    });
+
+</script>
+
+    </body>
+</html>
