@@ -297,7 +297,6 @@ $config = [
                 <span class="home-header__text"><?php echo htmlspecialchars($config['fleet']['description']); ?></span>
             </div>
         </div>
-
         <div id="preloader" class="preloader">
             <div class="preloader__load">
                 <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
