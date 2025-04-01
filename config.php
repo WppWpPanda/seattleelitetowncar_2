@@ -17,14 +17,14 @@ $config['header'] = [
     ],
     'assets' => [
         'styles' => [
-            'theme/fonts/fontawesome/css/all.css',
-            'theme/css/slick.css',
-            'theme/css/bootstrap.min.css',
-            'theme/css/animate.min.css',
-            'theme/css/style.css'
+            '/theme/fonts/fontawesome/css/all.css',
+            '/theme/css/slick.css',
+            '/theme/css/bootstrap.min.css',
+            '/theme/css/animate.min.css',
+            '/theme/css/style.css'
         ],
         'logo' => [
-            'src' => 'theme/images/logo_n.png',
+            'src' => '/theme/images/logo_n.png',
             'alt' => 'Seattle limo & town car service - Go to homepage'
         ]
     ],
@@ -35,7 +35,7 @@ $config['header'] = [
         ],
         'logo' => [
             'title' => 'Seattle limo & town car service',
-            'home_url' => 'index' . PHP
+            'home_url' => '/index' . PHP
         ],
         'phones' => [
             [
@@ -58,69 +58,69 @@ $config['header'] = [
             'items' => [
                 [
                     'title' => 'Home',
-                    'url' => 'index' . PHP,
+                    'url' => '/ndex' . PHP,
                     'current' => false
                 ],
                 [
                     'title' => 'Quote',
-                    'url' => 'quote.php.html',
+                    'url' => '/quote.php.html',
                     'current' => false
                 ],
                 [
                     'title' => 'Reservation',
-                    'url' => 'reservation.php.html',
+                    'url' => '/reservation.php.html',
                     'current' => false
                 ],
                 [
                     'title' => 'Our fleet',
-                    'url' => 'fleet.php.html',
+                    'url' => 'fleet' . PHP,
                     'current' => false,
                     'dropdown' => [
                         [
                             'title' => 'Luxury Sedans',
-                            'url' => 'fleet-sedans.php.html'
+                            'url' => '/fleet/sedans' . PHP
                         ],
                         [
                             'title' => 'Luxury SUVs',
-                            'url' => 'fleet-suvs.php.html'
+                            'url' => '/fleet/suvs' . PHP
                         ],
                         [
                             'title' => 'Luxury Van',
-                            'url' => 'fleet-vans.php.html'
+                            'url' => '/fleet/vans' . PHP
                         ],
                         [
                             'title' => 'Luxury Limousines',
-                            'url' => 'fleet-limos.php.html'
+                            'url' => '/fleet/limos' . PHP
                         ],
                         [
                             'title' => 'Luxury Buses',
-                            'url' => 'fleet-buses.php.html'
+                            'url' => '/fleet/buses' . PHP
                         ]
                     ]
                 ],
                 [
                     'title' => 'Services',
-                    'url' => 'services' . PHP,
+                    'url' => '/services' . PHP,
                     'current' => false
                 ],
                 [
                     'title' => 'Rates',
-                    'url' => 'rates.php.html',
+                    'url' => '/rates.php.html',
                     'current' => false
                 ],
                 [
                     'title' => 'FAQ',
-                    'url' => 'faq.php.html',
+                    'url' => '/faq.php.html',
                     'current' => false
                 ],
                 [
                     'title' => 'Reviews',
-                    'url' => 'reviews.php.html',
+                    'url' => '/reviews.php.html',
                     'current' => false
                 ],
                 [
                     'title' => 'Contact us',
-                    'url' => 'contact.php.html',
+                    'url' => '/contact.php.html',
                     'current' => true
                 ]
             ],
@@ -128,11 +128,11 @@ $config['header'] = [
         ],
         'user' => [
             'login' => [
-                'url' => 'login.html',
+                'url' => '/login.html',
                 'text' => 'Sign In'
             ],
             'register' => [
-                'url' => 'reg.php.html',
+                'url' => '/reg.php.html',
                 'text' => 'Registration'
             ],
             'section_label' => 'User login'
@@ -146,13 +146,13 @@ $config['header'] = [
             'var' => 'uetq'
         ],
         'main' => [
-            'theme/js/libs/jquery.min.js',
-            'theme/js/libs/bootstrap.min.js',
-            'theme/js/libs/jquery.viewportchecker.min.js',
-            'theme/js/libs/slick.min.js',
-            'theme/js/main.js',
-            'theme/js/slider.js',
-            'theme/js/bg.js'
+            '/theme/js/libs/jquery.min.js',
+            '/theme/js/libs/bootstrap.min.js',
+            '/theme/js/libs/jquery.viewportchecker.min.js',
+            '/theme/js/libs/slick.min.js',
+            '/theme/js/main.js',
+            '/theme/js/slider.js',
+            '/theme/js/bg.js'
         ]
     ]
 ];
@@ -242,7 +242,7 @@ $config['footer'] = [
         'theme/js/libs/jquery.viewportchecker.min.js',
         'theme/js/libs/slick.min.js',
         'theme/js/main.js',
-        'theme/js/slider.js',
+
         //  'theme/js/bg.js'
     ],
 
@@ -255,5 +255,10 @@ $config['footer'] = [
 if (is_home_page()) {
     $config['footer']['scripts'][] = 'theme/js/bg.js';
 }
+
+if (!is_ratese_page()) {
+    $config['footer']['scripts'][] = 'theme/js/slider.js';
+}
+
 
 $GLOBALS['wpp_config'] = $config;

@@ -101,7 +101,7 @@ $config = [
                         'image' => 'uploads/fleetcategories/img5.png',
                         'alt' => 'Lincoln MKT',
                         'description' => 'LINCOLN MKT',
-                        'url' => 'fleet-sedans.php.html',
+                        'url' => 'fleet-sedans' . PHP,
                         'button_text' => 'See All'
                     ]
                 ]

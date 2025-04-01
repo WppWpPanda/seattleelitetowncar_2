@@ -9,3 +9,10 @@ function is_home_page() {
         $request_uri === 'index.php' ||
         $script_name === 'index.php' && empty($request_uri));
 }
+function is_ratese_page()
+{
+    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $parts = explode('/', trim($path, '/'));
+
+    return ( in_array('rates', $parts) || in_array('rates.php', $parts));
+}
