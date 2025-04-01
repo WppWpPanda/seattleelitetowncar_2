@@ -16,7 +16,7 @@ $config = [
             ],
             'scroll_down' => [
                 'text' => 'scroll down',
-                'url' => 'index.html#services',
+                'url' => '#services',
                 'aria_label' => 'Scroll down to services section'
             ]
         ]
@@ -29,7 +29,7 @@ $config = [
                 'subtitle' => 'services',
                 'image' => 'uploads/services/img-01.jpg',
                 'alt' => 'Airport car services',
-                'url' => 'services.php.html',
+                'url' => 'services' . PHP,
                 'button_text' => 'See more'
             ],
             [
@@ -37,7 +37,7 @@ $config = [
                 'subtitle' => 'services',
                 'image' => 'uploads/services/img-03.jpg',
                 'alt' => 'Corporate car services',
-                'url' => 'services.php.html',
+                'url' => 'services' . PHP,
                 'button_text' => 'See more'
             ],
             [
@@ -45,7 +45,7 @@ $config = [
                 'subtitle' => 'services',
                 'image' => 'uploads/services/img-02.jpg',
                 'alt' => 'Weddings car services',
-                'url' => 'services.php.html',
+                'url' => 'services' . PHP,
                 'button_text' => 'See more'
             ],
             [
@@ -53,13 +53,13 @@ $config = [
                 'subtitle' => 'services',
                 'image' => 'uploads/services/img-04.png',
                 'alt' => 'Proms car services',
-                'url' => 'services.php.html',
+                'url' => 'services' . PHP,
                 'button_text' => 'See more'
             ]
         ],
         'scroll_down' => [
             'text' => 'scroll down',
-            'url' => 'index.html#fleet',
+            'url' => 'index' . PHP  . '#fleet',
             'aria_label' => 'Scroll down to fleet section'
         ]
     ],
@@ -135,7 +135,7 @@ $config = [
         ],
         'scroll_down' => [
             'text' => 'scroll down',
-            'url' => 'index.html#about',
+            'url' => 'index' . PHP  . '#about',
             'aria_label' => 'Scroll down to about section'
         ]
     ],
@@ -156,7 +156,7 @@ $config = [
         'buttons' => [
             'read_more' => [
                 'text' => 'Read more',
-                'url' => 'index.html#',
+                'url' => 'index' . PHP  . '#',
                 'aria_label' => 'Read more about us'
             ]
         ],
@@ -172,7 +172,7 @@ $config = [
         ],
         'scroll_down' => [
             'text' => 'scroll down',
-            'url' => 'index.html#footer',
+            'url' => 'index' . PHP  . 'l#footer',
             'aria_label' => 'Scroll down to footer'
         ]
     ],
@@ -223,7 +223,7 @@ $config = [
                         <hr aria-hidden="true">
                     </div>
                     <h2 class="home-header__title"><a
-                                href="index.html#"><?php echo htmlspecialchars($config['services']['title']); ?></a>
+                                href="<?php echo SITE_URL ?>services<?php echo PHP; ?>"><?php echo htmlspecialchars($config['services']['title']); ?></a>
                     </h2>
                     <div class="heading-line">
                         <hr aria-hidden="true">
@@ -377,7 +377,7 @@ $config = [
                     <hr aria-hidden="true">
                 </div>
                 <h2 class="home-header__title"><a
-                            href="index.html#"><?php echo htmlspecialchars($config['about']['title']); ?></a></h2>
+                            href="index<?php echo PHP ?>#"><?php echo htmlspecialchars($config['about']['title']); ?></a></h2>
                 <div class="heading-line">
                     <hr aria-hidden="true">
                     <hr aria-hidden="true">

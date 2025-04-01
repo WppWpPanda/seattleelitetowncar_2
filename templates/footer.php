@@ -2,30 +2,30 @@
 defined('ABS_PATH') or exit('No direct script access allowed');
 $config = $wpp_config['footer'];
 ?>
-
 <footer id="footer" class="footer" aria-label="Site footer">
-    <div class="view-list">
-        <div class="container">
-            <div class="row">
-                <?php foreach ($config['navItems'] as $item): ?>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="view-list__container">
-                            <a class="view-list__link" href="<?php echo htmlspecialchars($item['href']) ?>"
-                               title="<?php echo htmlspecialchars($item['title']) ?>"
-                               aria-label="<?php echo htmlspecialchars($item['title']) ?>">
-                                <div class="view-list__icon">
-                                    <img class="view-list__img" src="<?php echo htmlspecialchars($item['icon']) ?>"
-                                         alt="<?php echo htmlspecialchars($item['alt']) ?>" loading="lazy">
-                                </div>
-                                <span class="view-list__desc"><?php echo htmlspecialchars($item['title']) ?></span>
-                            </a>
+    <?php if (is_home_page()) { ?>
+        <div class="view-list">
+            <div class="container">
+                <div class="row">
+                    <?php foreach ($config['navItems'] as $item): ?>
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="view-list__container">
+                                <a class="view-list__link" href="<?php echo htmlspecialchars($item['href']) ?>"
+                                   title="<?php echo htmlspecialchars($item['title']) ?>"
+                                   aria-label="<?php echo htmlspecialchars($item['title']) ?>">
+                                    <div class="view-list__icon">
+                                        <img class="view-list__img" src="<?php echo htmlspecialchars($item['icon']) ?>"
+                                             alt="<?php echo htmlspecialchars($item['alt']) ?>" loading="lazy">
+                                    </div>
+                                    <span class="view-list__desc"><?php echo htmlspecialchars($item['title']) ?></span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
-    </div>
-
+    <?php } ?>
     <div class="wrap">
         <div class="contacts">
             <div class="container content-wrapper">
@@ -52,20 +52,24 @@ $config = $wpp_config['footer'];
                             <?php foreach ($config['socialLinks'] as $social): ?>
                                 <div class="icons" role="listitem">
                                     <a href="<?php echo htmlspecialchars($social['href']) ?>" target="_blank"
-                                       rel="noopener noreferrer" aria-label="<?php echo htmlspecialchars($social['label']) ?>">
-                                        <i class="<?php echo htmlspecialchars($social['class']) ?>" aria-hidden="true"></i>
+                                       rel="noopener noreferrer"
+                                       aria-label="<?php echo htmlspecialchars($social['label']) ?>">
+                                        <i class="<?php echo htmlspecialchars($social['class']) ?>"
+                                           aria-hidden="true"></i>
                                     </a>
                                 </div>
                             <?php endforeach; ?>
 
                             <div style="margin-top:8px;" id="<?php echo $config['yelpBadge']['id'] ?>">
-                                <a href="<?php echo $config['yelpBadge']['link'] ?>" target="_blank" rel="noopener noreferrer">
+                                <a href="<?php echo $config['yelpBadge']['link'] ?>" target="_blank"
+                                   rel="noopener noreferrer">
                                     <?php echo $config['yelpBadge']['text'] ?>
                                 </a>
                             </div>
                         </div>
 
-                        <a href="<?php echo $config['quoteButton']['href'] ?>" class="<?php echo $config['quoteButton']['class'] ?>" role="button">
+                        <a href="<?php echo $config['quoteButton']['href'] ?>"
+                           class="<?php echo $config['quoteButton']['class'] ?>" role="button">
                             <?php echo $config['quoteButton']['text'] ?>
                         </a>
                     </div>
@@ -79,7 +83,8 @@ $config = $wpp_config['footer'];
                 <div class="row">
                     <div class="col-sm-12">
                         <p class="text-center">
-                            <a target="_blank" href="<?php echo $config['copyright']['link'] ?>" rel="noopener noreferrer">
+                            <a target="_blank" href="<?php echo $config['copyright']['link'] ?>"
+                               rel="noopener noreferrer">
                                 <?php echo $config['copyright']['text'] ?>
                             </a>
                         </p>

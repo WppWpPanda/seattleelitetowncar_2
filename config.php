@@ -1,6 +1,9 @@
 <?php
 define('ABS_PATH', dirname(__FILE__) . '/');
-const SITE_URL =  'http://seattleelitetowncar.coms/';
+require_once 'core/conditional.php';
+const SITE_URL = 'http://seattleelitetowncar.coms/';
+const PHP = '.php';
+const INDEX = 'index.php';
 
 
 $config = [];
@@ -32,7 +35,7 @@ $config['header'] = [
         ],
         'logo' => [
             'title' => 'Seattle limo & town car service',
-            'home_url' => 'index.php'
+            'home_url' => 'index' . PHP
         ],
         'phones' => [
             [
@@ -55,7 +58,7 @@ $config['header'] = [
             'items' => [
                 [
                     'title' => 'Home',
-                    'url' => 'index.html',
+                    'url' => 'index' . PHP,
                     'current' => false
                 ],
                 [
@@ -97,7 +100,7 @@ $config['header'] = [
                 ],
                 [
                     'title' => 'Services',
-                    'url' => 'services.php.html',
+                    'url' => 'services' . PHP,
                     'current' => false
                 ],
                 [
@@ -157,7 +160,7 @@ $config['header'] = [
 
 // config/footer_config.php
 
-$config['footer']  = [
+$config['footer'] = [
     'navItems' => [
         [
             'title' => 'Our Vehicles',
@@ -167,7 +170,7 @@ $config['footer']  = [
         ],
         [
             'title' => 'Our Services',
-            'href' => 'services.php.html',
+            'href' => 'services' . PHP,
             'icon' => 'theme/images/icons/info-02.png',
             'alt' => 'Services icon'
         ],
@@ -240,7 +243,7 @@ $config['footer']  = [
         'theme/js/libs/slick.min.js',
         'theme/js/main.js',
         'theme/js/slider.js',
-        'theme/js/bg.js'
+        //  'theme/js/bg.js'
     ],
 
     'yelpScript' => [
@@ -248,5 +251,9 @@ $config['footer']  = [
         'src' => '//yelp.com/biz_badge_js/en_US/plain/i8xK490z_vPddqxtXhx5vQ.js'
     ]
 ];
+
+if (is_home_page()) {
+    $config['footer']['scripts'][] = 'theme/js/bg.js';
+}
 
 $GLOBALS['wpp_config'] = $config;
