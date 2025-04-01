@@ -10,6 +10,12 @@
     <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
+  <component name="PhpProjectServersManager">
+    <servers>
+      <server host="http://seattleelitetowncar.coms/" id="267f596d-2649-4c4e-87c1-92e2a06c5131" name="http://seattleelitetowncar.coms/" use_path_mappings="true" />
+    </servers>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
