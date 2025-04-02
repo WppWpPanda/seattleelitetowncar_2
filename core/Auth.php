@@ -110,4 +110,18 @@ class Auth {
         }
     }
 
+    public function getUser_by_id($id) {
+
+        try {
+            $t =  $this->db->query(
+                "SELECT * FROM users WHERE id = ?s",
+                [$id]
+            );
+            return $t->fetch();
+        } catch (Exception $e) {
+            error_log("Email check failed: " . $e->getMessage());
+            return false;
+        }
+    }
+
 }

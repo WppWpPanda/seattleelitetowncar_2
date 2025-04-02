@@ -81,7 +81,7 @@ $config['header'] = [
             'items' => [
                 [
                     'title' => 'Home',
-                    'url' => '/ndex' . PHP,
+                    'url' => '/index' . PHP,
                     'current' => false
                 ],
                 [
