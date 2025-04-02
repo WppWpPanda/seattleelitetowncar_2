@@ -1,6 +1,4 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-defined('ABS_PATH') or exit('No direct script access allowed');
 global $wpp_config;
 $config = $wpp_config['header'];
 ?>

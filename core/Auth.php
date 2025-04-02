@@ -1,0 +1,113 @@
+<?php
+class Auth {
+    private $db;
+
+    public function __construct() {
+        $this->db = Database::connect();
+    }
+
+    public function register($email, $password, $name) {
+        // Валидация email
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception("Некорректный email");
+        }
+
+        // Проверка на существование пользователя
+        $exists = $this->db->query("SELECT 1 FROM users WHERE email = ?s", [$email])->fetch();
+        if ($exists) {
+            throw new Exception("Пользователь с таким email уже существует");
+        }
+
+        $pwd_peppered = hash_hmac("sha256", $password, STR);
+        // Хеширование пароля
+        $hashedPassword = password_hash($pwd_peppered, PASSWORD_DEFAULT);
+
+        // Создание пользователя с минимальными данными
+        $this->db->query(
+            "INSERT INTO users (email, password, name) VALUES (?s, ?s, ?s)",
+            [$email, $hashedPassword, $name]
+        );
+
+        return true;
+    }
+
+    public function login($email, $password) {
+        $user = $this->db->query("SELECT * FROM users WHERE email = ?s", [$email])->fetch();
+
+        if (!$user) {
+            throw new Exception("Неверный email");
+        }
+
+        $pwd_peppered = hash_hmac("sha256", $password, STR);
+        // Хеширование пароля
+
+        if( ! password_verify( $pwd_peppered, $user['password'] )) {
+            throw new Exception($user['password'] . '   //  ' . $pwd_peppered );
+        }
+        //$2y$10$qmwreo1v.JMphIrQirnfSejltDpvB8ue35k7E0I57LciKcV56VGlS
+
+        // Стартуем сессию если еще не начата
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION['user'] = [
+            'id' => $user['id'],
+            'email' => $user['email'],
+            'name' => $user['name']
+        ];
+
+        return true;
+    }
+
+    public function logout() {
+        session_start();
+        unset($_SESSION['user']);
+        session_destroy();
+    }
+
+    public function isLoggedIn() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        return isset($_SESSION['user']);
+    }
+
+    public function getUser() {
+        return $_SESSION['user'] ?? null;
+    }
+
+    public function emailExists($email) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return false;
+        }
+
+        try {
+            return (bool)$this->db->query(
+                "SELECT EXISTS(SELECT 1 FROM users WHERE email = ?s) AS exists",
+                [$email]
+            )->fetch()['exists'];
+        } catch (Exception $e) {
+            error_log("Email check failed: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function egetUser_by_email($email) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return false;
+        }
+
+        try {
+            $t =  $this->db->query(
+                "SELECT `id` FROM users WHERE email = ?s",
+                [$email]
+            );
+            return $t->fetch()['id'];
+        } catch (Exception $e) {
+            error_log("Email check failed: " . $e->getMessage());
+            return false;
+        }
+    }
+
+}

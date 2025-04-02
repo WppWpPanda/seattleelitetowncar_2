@@ -1,1 +1,3 @@
 *.zip
+/composer.phar
+/vendor/

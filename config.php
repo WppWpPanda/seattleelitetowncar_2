@@ -1,9 +1,32 @@
 <?php
 define('ABS_PATH', dirname(__FILE__) . '/');
 require_once 'core/conditional.php';
+require_once 'vendor/autoload.php';
+require_once 'core/Database.php';
+require_once 'core/Auth.php';
+
 const SITE_URL = 'http://seattleelitetowncar.coms/';
+const STR = 'dxMDdmjOlvx';
 const PHP = '.php';
 const INDEX = 'index.php';
+
+$db =  [
+    'db' => [
+        'default' => [
+            'host' => '127.0.0.1',
+            'port' => 3306,
+            'dbname' => 'wp_panda_seatle',
+            'username' => 'wp_panda',
+            'password' => '12345',
+            'charset' => 'utf8mb4',
+            'options' => [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            ]
+        ]
+    ]
+];
+$GLOBALS['wpp_db'] = $db;
 
 
 $config = [];
@@ -105,22 +128,22 @@ $config['header'] = [
                 ],
                 [
                     'title' => 'Rates',
-                    'url' => '/rates.php.html',
+                    'url' => '/rates' . PHP,
                     'current' => false
                 ],
                 [
                     'title' => 'FAQ',
-                    'url' => '/faq.php.html',
+                    'url' => '/faq' . PHP,
                     'current' => false
                 ],
                 [
                     'title' => 'Reviews',
-                    'url' => '/reviews.php.html',
+                    'url' => '/reviews' . PHP,
                     'current' => false
                 ],
                 [
                     'title' => 'Contact us',
-                    'url' => '/contact.php.html',
+                    'url' => '/contact' . PHP,
                     'current' => true
                 ]
             ],
@@ -128,11 +151,11 @@ $config['header'] = [
         ],
         'user' => [
             'login' => [
-                'url' => '/login.html',
+                'url' => '/login' . PHP,
                 'text' => 'Sign In'
             ],
             'register' => [
-                'url' => '/reg.php.html',
+                'url' => '/reg' . PHP,
                 'text' => 'Registration'
             ],
             'section_label' => 'User login'
