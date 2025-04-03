@@ -128,10 +128,12 @@ $config = $wpp_config['header'];
                 <a href="<?php echo htmlspecialchars($config['navigation']['user']['login']['url']); ?>" role="button">
                     <?php echo htmlspecialchars($config['navigation']['user']['login']['text']); ?>
                 </a>
+                <?php if(!empty($config['navigation']['user']['register'])) { ?>
                 <a href="<?php echo htmlspecialchars($config['navigation']['user']['register']['url']); ?>"
                    role="button">
                     <?php echo htmlspecialchars($config['navigation']['user']['register']['text']); ?>
                 </a>
+                <?php } ?>
             </div>
         </div>
     </div>

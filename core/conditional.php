@@ -22,5 +22,13 @@ function is_quote_page()
     $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $parts = explode('/', trim($path, '/'));
 
-    return ( in_array('_quote', $parts) || in_array('_quote.php', $parts));
+    return ( in_array('quote', $parts) || in_array('quote.php', $parts));
+}
+
+function is_reserv_page()
+{
+    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $parts = explode('/', trim($path, '/'));
+
+    return ( in_array('reservation', $parts) || in_array('reservation.php', $parts));
 }

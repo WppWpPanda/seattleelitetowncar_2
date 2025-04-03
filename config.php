@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 define('ABS_PATH', dirname(__FILE__) . '/');
 require_once 'core/conditional.php';
 require_once 'vendor/autoload.php';
@@ -6,6 +9,7 @@ require_once 'core/Database.php';
 require_once 'core/Auth.php';
 
 const SITE_URL = 'http://seattleelitetowncar.coms/';
+const VER = '1.0.6';
 const STR = 'dxMDdmjOlvx';
 const PHP = '.php';
 const INDEX = 'index.php';
@@ -98,12 +102,12 @@ $config['header'] = [
                 ],
                 [
                     'title' => 'Quote',
-                    'url' => '/quote.php.html',
+                    'url' => '/quote' . PHP,
                     'current' => false
                 ],
                 [
                     'title' => 'Reservation',
-                    'url' => '/reservation.php.html',
+                    'url' => '/reservation' . PHP,
                     'current' => false
                 ],
                 [
@@ -192,9 +196,21 @@ $config['header'] = [
     ]
 
 ];
+$auth = new Auth();
+
+if (  $auth->isLoggedIn()) {
+    $config['header'][ 'navigation' ]['user'] = [
+        'login' => [
+            'url' => '/profile' . PHP,
+            'text' => 'My Account'
+        ],
+        'section_label' => 'My Account'
+    ];
+}
 
 
-if (is_quote_page()) :
+
+if (is_quote_page() || is_reserv_page() ) :
     $config['header']['assets']['styles'][] = 'theme/css/jquery.periodpicker.css';
     $config['header']['assets']['styles'][] = 'theme/css/jquery.timepicker.css';
     $config['header']['assets']['styles'][] = 'theme/js/sweetalert/sweetalert2.min.css';
@@ -208,7 +224,7 @@ $config['footer'] = [
     'navItems' => [
         [
             'title' => 'Our Vehicles',
-            'href' => 'fleet-buses.php.html',
+            'href' => 'fleet/buses' . PHP,
             'icon' => 'theme/images/icons/info-01.png',
             'alt' => 'Vehicle icon'
         ],
@@ -220,13 +236,13 @@ $config['footer'] = [
         ],
         [
             'title' => 'Our Rates',
-            'href' => 'rates.php.html',
+            'href' => 'rates' . PHP,
             'icon' => 'theme/images/icons/info-03.png',
             'alt' => 'Rates icon'
         ],
         [
             'title' => 'Fast Reservation',
-            'href' => 'reservation.php.html',
+            'href' => 'reservation' . PHP,
             'icon' => 'theme/images/icons/info-04.png',
             'alt' => 'Reservation icon'
         ]
@@ -253,13 +269,8 @@ $config['footer'] = [
     'socialLinks' => [
         [
             'href' => 'https://www.facebook.com/elitetowncar/',
-            'class' => 'fa fa-facebook',
+            'class' => 'fab fa-facebook-f',
             'label' => 'Facebook'
-        ],
-        [
-            'href' => 'https://plus.google.com/+Seattleelitetowncar',
-            'class' => 'fa fa-google-plus',
-            'label' => 'Google+'
         ]
     ],
 
@@ -270,14 +281,14 @@ $config['footer'] = [
     ],
 
     'quoteButton' => [
-        'href' => 'quote.php.html',
+        'href' => 'quote' . PHP,
         'text' => 'Get a quote',
         'class' => 'btn btn-yellow'
     ],
 
     'copyright' => [
         'text' => '&copy; ' . date('Y') . ' Limousine services. All rights reserved.<br>Powered by webandad',
-        'link' => 'http://webandad.com/'
+        'link' => 'https://webandad.com/'
     ],
 
     'scripts' => [
@@ -285,7 +296,7 @@ $config['footer'] = [
         '/theme/js/libs/bootstrap.min.js',
         '/theme/js/libs/jquery.viewportchecker.min.js',
         '/theme/js/libs/slick.min.js',
-        '/theme/js/main.js'
+        '/theme/js/main.js?' . VER
     ],
 
     'yelpScript' => [
@@ -302,7 +313,7 @@ if (!is_ratese_page()) {
     $config['footer']['scripts'][] = '/theme/js/slider.js';
 }
 
-if (is_quote_page()) {
+if (is_quote_page() || is_reserv_page() ) {
     $config['footer']['scripts'][] = '/theme/js/jquery.validate.min.js';
     $config['footer']['scripts'][] = '/theme/js/jquery.periodpicker.full.min.js';
     $config['footer']['scripts'][] = '/theme/js/jquery.datetimepicker.js';

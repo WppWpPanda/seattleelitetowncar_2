@@ -44,24 +44,23 @@ try {
         mkdir($logDir, 0777, true);
     }
 
-    // Имя файла лога
     $logFile = $logDir . '/' . date('H-i-s') . '.txt';
 
-    // Создаем PHPMailer
     $mail = new PHPMailer(true);
 
-    // Настройки SMTP (замените на свои)
     $mail->isSMTP();
-    $mail->Host = 'smtp.example.com';
+    $mail->Host = MAIL_HOST;
     $mail->SMTPAuth = true;
-    $mail->Username = 'your_email@example.com';
-    $mail->Password = 'your_password';
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = 587;
+    $mail->Username = MAIL_USERNAME;
+    $mail->Password = MAIL_PASSWORD;
+    $mail->SMTPSecure = MAIL_ENCRYPTION;
+    $mail->Port = MAIL_PORT;
 
-    // Отправитель и получатель
-    $mail->setFrom('no-reply@yourdomain.com', 'Quote Form');
-    $mail->addAddress('quotes@yourdomain.com', 'Quotes Department');
+    $mail->setFrom(
+        MAIL_FROM_ADDRESS,
+        MAIL_FROM_NAME
+    );
+    $mail->addAddress(MAIL_RECIPIENT_ADDRESS, 'Admin');
     $mail->addReplyTo($data['email'], $data['name']);
 
     // HTML письмо

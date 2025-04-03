@@ -43,10 +43,9 @@ try {
     // Генерируем имя файла для лога
     $logFile = $logDir . '/' . date('H-i-s') . '.txt';
 
-    // Создаем PHPMailer
     $mail = new PHPMailer(true);
 
-    // Настройки сервера (замените на свои)
+
     $mail->isSMTP();
     $mail->Host = MAIL_HOST;
     $mail->SMTPAuth = true;
@@ -55,7 +54,6 @@ try {
     $mail->SMTPSecure = MAIL_ENCRYPTION;
     $mail->Port = MAIL_PORT;
 
-    // Настройки письма
     $mail->setFrom(
         MAIL_FROM_ADDRESS,
         MAIL_FROM_NAME

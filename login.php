@@ -53,8 +53,8 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?></nav>
                                         <div style="color: red"><?php echo htmlspecialchars($error) ?></div>
                                     <?php endif; ?>
                                     <div class="form-group">
-                                        <a href="login/password-recovery.html">Forgot Password?</a>
-                                    </div>
+                                    <!--    <a href="login/password-recovery.html">Forgot Password?</a>
+                                    </div>-->
                                 </div>
 
                                 <div class=" col-sm-offset-3 col-sm-6">

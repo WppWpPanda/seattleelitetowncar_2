@@ -1,5 +1,11 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+$auth = new Auth();
+
+if ($auth->isLoggedIn()) {
+    header("Location: profile.php");
+    exit;
+}
 require_once 'templates/header.php';
 defined('ABS_PATH' or exit('No direct script access allowed')); ?>
     <section class="">
