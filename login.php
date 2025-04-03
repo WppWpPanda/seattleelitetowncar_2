@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = $e->getMessage();
     }
 }
-require_once 'templates/header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php';
 defined('ABS_PATH' or exit('No direct script access allowed')); ?></nav>
         <section class="">
     <div class="content-wrap">

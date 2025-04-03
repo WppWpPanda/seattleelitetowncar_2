@@ -7,7 +7,7 @@ if (!$auth->isLoggedIn()) {
     header("Location: login.php");
     exit;
 }
-require_once 'templates/header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php';
 defined('ABS_PATH' or exit('No direct script access allowed')); ?>
 <style>
     /* Стили для сообщений */
@@ -52,7 +52,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="header-short">
-                            <h2 class="header-short__text">Registration</h2>
+                            <h2 class="header-short__text">My Account</h2>
                             <div class="header-short__line"></div>
                             <div class="header-short__line"></div>
                         </div>

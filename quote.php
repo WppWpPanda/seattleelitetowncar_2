@@ -1,6 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-require_once 'templates/header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php';
 defined('ABS_PATH' or exit('No direct script access allowed')); ?>
     <div class="content-wrap">
         <div class="container-fluid">

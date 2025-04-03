@@ -261,7 +261,7 @@ $rates_settings = array(
                                             </div>
                                             <div class="rate-table__cell">
                                                 <a class="btn-reserve visible-xs"
-                                                   href="reservationl"<?php echo PHP; ?>
+                                                   href="reservation"<?php echo PHP; ?>
                                                    aria-label="Reserve <?php echo $rate['vehicle']; ?>">
                                                     <span>Reserve</span>
                                                 </a>

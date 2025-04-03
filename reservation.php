@@ -10,7 +10,6 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                         <h2 class="header-short__text">Reservation</h2>
                         <div class="header-short__line"></div>
                         <div class="header-short__line"></div>
-                        <a href="reservation<?php echo PHP ?>" class="btn-yellow header-short__btn">Reservation</a>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@ $fleetConfig = [
             'image' => 'uploads/fleets/kandinsky-download-1724423545133-qt1btnahp3xnxk54hb9dehf3g2hvza6xi44cut9u7g.png',
             'image_alt' => 'Lincoln MKT luxury sedan',
             'description' => 'Lincoln TOWN CAR / Chrysler 300 / Lincoln MK / Cadillac ATS / Mersedes S550',
-            'see_all_url' => 'fleet-sedans'  . PHP,
+            'see_all_url' => 'fleet/sedans'  . PHP,
             'see_all_aria' => 'View all luxury sedan options',
             'reserve_aria' => 'Reserve a luxury sedan'
         ],
@@ -30,7 +30,7 @@ $fleetConfig = [
             'image' => 'uploads/fleets/kandinsky-download-1724426082515-qt1dqbe0zdxs40e9hzu6k5ldrg18b8szlzvd0jgfn0.png',
             'image_alt' => 'Cadillac Escalade SUV',
             'description' => 'Cadillac Escalade / GMC Denali',
-            'see_all_url' => 'fleet-suvs.php.html',
+            'see_all_url' => 'fleet/suvs' . PHP,
             'see_all_aria' => 'View all luxury SUV options',
             'reserve_aria' => 'Reserve a luxury SUV'
         ],
@@ -40,7 +40,7 @@ $fleetConfig = [
             'image' => 'uploads/fleets/kandinsky-download-1724425009453-qt1d3t55c74m4536x9lruu21payu05gd6litc0tsmk.png',
             'image_alt' => 'Mercedes Sprinter van',
             'description' => 'Mercedes VAN',
-            'see_all_url' => 'fleet-vans.php.html',
+            'see_all_url' => 'fleet/vans' . PHP,
             'see_all_aria' => 'View all luxury van options',
             'reserve_aria' => 'Reserve a luxury van'
         ],
@@ -50,7 +50,7 @@ $fleetConfig = [
             'image' => 'uploads/fleets/limo-1-qfk0xirfe3w1os735ans8d17a3gvy5uly4exriuy3w.png',
             'image_alt' => 'Cadillac stretch limousine',
             'description' => 'Chrysler 300 / Cadillac Stretch Limousine / HUMMER',
-            'see_all_url' => 'fleet-limos.php.html',
+            'see_all_url' => 'fleet/limos' . PHP,
             'see_all_aria' => 'View all limousine options',
             'reserve_aria' => 'Reserve a limousine'
         ],
@@ -60,7 +60,7 @@ $fleetConfig = [
             'image' => 'uploads/fleets/bus-2-qfk15gid3qr7q8o0sq6dacxbv8cgy5d0deqjnn39kc.png',
             'image_alt' => 'Executive mini coach bus',
             'description' => 'Limo Buses / Luxury Coach Bus / Executive Mini Coach Bus / Limo Bus',
-            'see_all_url' => 'fleet-buses.php.html',
+            'see_all_url' => 'fleet/buses' . PHP,
             'see_all_aria' => 'View all luxury bus options',
             'reserve_aria' => 'Reserve a luxury bus'
         ]

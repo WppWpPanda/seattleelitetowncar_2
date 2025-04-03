@@ -1,6 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-require_once 'templates/header.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php';
 defined('ABS_PATH' or exit('No direct script access allowed')); ?>
 
 <?php
@@ -12,7 +12,7 @@ $config = [
         'buttons' => [
             'reserve' => [
                 'text' => 'Reserve now',
-                'url' => 'reservation.php.html',
+                'url' => 'reservation' . PHP,
                 'aria_label' => 'Make a reservation'
             ],
             'scroll_down' => [
@@ -76,7 +76,7 @@ $config = [
                         'image' => 'uploads/fleetcategories/img2.png',
                         'alt' => 'Executive mini coach bus',
                         'description' => '<strong>EXECUTIVE MINI COACH BUS</strong> | 24 PASSENGER',
-                        'url' => 'fleet-buses.php.html',
+                        'url' => 'fleet/buses' . PHP,
                         'button_text' => 'See All'
                     ]
                 ]
@@ -89,7 +89,7 @@ $config = [
                         'image' => 'uploads/fleetcategories/img1.png',
                         'alt' => 'Cadillac limousine',
                         'description' => '<strong>Cadillac</strong> Limousine',
-                        'url' => 'fleet-limos.php.html',
+                        'url' => 'fleet/limos' . PHP,
                         'button_text' => 'See All'
                     ]
                 ]
@@ -102,7 +102,7 @@ $config = [
                         'image' => 'uploads/fleetcategories/img5.png',
                         'alt' => 'Lincoln MKT',
                         'description' => 'LINCOLN MKT',
-                        'url' => 'fleet-sedans' . PHP,
+                        'url' => 'fleet/sedans' . PHP,
                         'button_text' => 'See All'
                     ]
                 ]
@@ -115,7 +115,7 @@ $config = [
                         'image' => 'uploads/fleetcategories/img4.png',
                         'alt' => 'Cadillac escalade',
                         'description' => '<strong>cadillac</strong> escalade',
-                        'url' => 'fleet-suvs.php.html',
+                        'url' => 'fleet/suvs' . PHP,
                         'button_text' => 'See All'
                     ]
                 ]
@@ -128,7 +128,7 @@ $config = [
                         'image' => 'uploads/fleetcategories/img3.png',
                         'alt' => 'Mercedes Sprinter',
                         'description' => '<strong>Mercedes</strong> Sprinter',
-                        'url' => 'fleet-vans.php.html',
+                        'url' => 'fleet/vans' . PHP,
                         'button_text' => 'See All'
                     ]
                 ]
@@ -173,7 +173,7 @@ $config = [
         ],
         'scroll_down' => [
             'text' => 'scroll down',
-            'url' => 'index' . PHP  . 'l#footer',
+            'url' => 'index' . PHP  . '#footer',
             'aria_label' => 'Scroll down to footer'
         ]
     ],
@@ -288,7 +288,7 @@ $config = [
                         <hr aria-hidden="true">
                     </div>
                     <h2 class="home-header__title"><a
-                                href="fleet-buses.php.html"><?php echo htmlspecialchars($config['fleet']['title']); ?></a>
+                                href="fleet/buses<?php echo PHP ?>"><?php echo htmlspecialchars($config['fleet']['title']); ?></a>
                     </h2>
                     <div class="heading-line">
                         <hr aria-hidden="true">

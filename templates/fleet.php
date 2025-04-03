@@ -54,12 +54,12 @@
                                     <div class="fleet-item__desc-val"><?php echo htmlspecialchars($vehicle['luggage']); ?></div>
                                 </div>
                                 <div class="fleet-item__btn-group">
-                                    <a href="quote<?php echo PHP ?>"
+                                    <a href="/quote<?php echo PHP ?>"
                                        class="btn-yellow btn-yellow--inv fleet-item__btn--db"
                                        aria-label="<?php echo htmlspecialchars($vehicle['quote_aria']); ?>">
                                         Get a quote
                                     </a>
-                                    <a href="reservation<?php echo PHP ?>"
+                                    <a href="/reservation<?php echo PHP ?>"
                                        class="btn-yellow btn-yellow--inv fleet-item__btn--db"
                                        aria-label="<?php echo htmlspecialchars($vehicle['reserve_aria']); ?>">
                                         Reserve now

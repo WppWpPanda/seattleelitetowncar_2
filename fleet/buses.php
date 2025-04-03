@@ -9,7 +9,7 @@ $fleetConfig = [
         'title' => 'Our Fleet',
         'reservation_btn' => [
             'text' => 'Reservation',
-            'url' => 'reservation' . PHP,
+            'url' => '/reservation' . PHP,
             'aria_label' => 'Make a reservation'
         ]
     ],
