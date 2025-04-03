@@ -19,7 +19,7 @@ const MAIL_HOST = 'smtp.sendgrid.net';
 const MAIL_PORT = '587';
 const MAIL_USERNAME = 'apikey';
 
-require_once 'keys.php';
+require_once '.keys.php';
 const MAIL_ENCRYPTION = 'tls';
 const MAIL_FROM_NAME = 'SeattleEliteTownCar';
 const MAIL_FROM_ADDRESS = 'no-reply@uppointment.com';
