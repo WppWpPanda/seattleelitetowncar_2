@@ -53,7 +53,7 @@ $config = $wpp_config['footer'];
                                 <div class="icons" role="listitem">
                                     <a href="<?php echo htmlspecialchars($social['href']) ?>" target="_blank"
                                        rel="noopener noreferrer"
-                                       aria-label="<?php echo htmlspecialchars($social['label']) ?>">
+                                       title="<?php echo htmlspecialchars($social['label']) ?>">
                                         <i class="<?php echo htmlspecialchars($social['class']) ?>"
                                            aria-hidden="true"></i>
                                     </a>
