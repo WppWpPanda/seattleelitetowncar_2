@@ -1,0 +1,14 @@
+[2025-04-02 23:03:26]
+Error: SMTP Error: Could not authenticate.
+Data: Array
+(
+    [name] => marina
+    [company] => Test buisness 1
+    [phone] => 0994544330
+    [email] => webandad@gmail.com
+    [brief] => dgd sdfsd sddf sfsd sdf se
+    [date] => 2025-04-02 23:03:25
+    [ip] => 127.0.0.1
+)
+
+

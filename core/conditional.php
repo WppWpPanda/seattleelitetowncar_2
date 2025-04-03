@@ -16,3 +16,11 @@ function is_ratese_page()
 
     return ( in_array('rates', $parts) || in_array('rates.php', $parts));
 }
+
+function is_quote_page()
+{
+    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $parts = explode('/', trim($path, '/'));
+
+    return ( in_array('_quote', $parts) || in_array('_quote.php', $parts));
+}

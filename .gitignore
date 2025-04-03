@@ -1,3 +1,4 @@
 *.zip
 /composer.phar
 /vendor/
+keys.php

@@ -10,6 +10,7 @@
     }
   ],
   "require": {
-    "digitalstars/database": "v1.1"
+    "digitalstars/database": "v1.1",
+    "phpmailer/phpmailer": "v6.9.3"
   }
 }

@@ -10,6 +10,18 @@ const STR = 'dxMDdmjOlvx';
 const PHP = '.php';
 const INDEX = 'index.php';
 
+const MAIL_DRIVER='smtp';
+const MAIL_HOST='smtp.sendgrid.net';
+const MAIL_PORT='587';
+const MAIL_USERNAME='apikey';
+
+require_once 'keys.php';
+const MAIL_ENCRYPTION='tls';
+const MAIL_FROM_NAME='SeattleEliteTownCar';
+const MAIL_FROM_ADDRESS='no-reply@uppointment.com';
+const MAIL_RECIPIENT_ADDRESS='panda@wp-panda.pro';
+
+
 $db =  [
     'db' => [
         'default' => [
@@ -260,13 +272,11 @@ $config['footer'] = [
     ],
 
     'scripts' => [
-        'theme/js/libs/jquery.min.js',
-        'theme/js/libs/bootstrap.min.js',
-        'theme/js/libs/jquery.viewportchecker.min.js',
-        'theme/js/libs/slick.min.js',
-        'theme/js/main.js',
-
-        //  'theme/js/bg.js'
+        '/theme/js/libs/jquery.min.js',
+        '/theme/js/libs/bootstrap.min.js',
+        '/theme/js/libs/jquery.viewportchecker.min.js',
+        '/theme/js/libs/slick.min.js',
+        '/theme/js/main.js'
     ],
 
     'yelpScript' => [
@@ -276,11 +286,17 @@ $config['footer'] = [
 ];
 
 if (is_home_page()) {
-    $config['footer']['scripts'][] = 'theme/js/bg.js';
+    $config['footer']['scripts'][] = '/theme/js/bg.js';
 }
 
 if (!is_ratese_page()) {
-    $config['footer']['scripts'][] = 'theme/js/slider.js';
+    $config['footer']['scripts'][] = '/theme/js/slider.js';
+}
+
+if (is_quote_page()) {
+    $config['footer']['scripts'][] = '/theme/js/jquery.validate.min.js';
+    $config['footer']['scripts'][] = '/theme/js/jquery.periodpicker.full.min.js';
+    $config['footer']['scripts'][] = '/theme/js/jquery.datetimepicker.js';
 }
 
 

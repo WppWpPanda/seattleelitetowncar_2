@@ -13,35 +13,35 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    	<meta charset="UTF-8">
-    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="description" content="Fill up all the fields and request a quote and we will get back to you as soon as possible">
-        <meta name="keywords" content="">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Request a Quote</title>
-        <link rel="stylesheet" type="text/css" href="theme/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="theme/css/slick.css"/>
-        <link rel="stylesheet" type="text/css" href="theme/css/bootstrap.min.css">
-        
-<link rel="stylesheet" href="theme/css/jquery.periodpicker.css" type="text/css">
-        <link rel="stylesheet" href="theme/css/jquery.timepicker.css" type="text/css">
-        <link rel="stylesheet" href="theme/js/sweetalert/sweetalert2.min.css">
-        <link rel="stylesheet" type="text/css" href="theme/css/style.css">
-                <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Fill up all the fields and request a quote and we will get back to you as soon as possible">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Request a Quote</title>
+    <link rel="stylesheet" type="text/css" href="theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="theme/css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="theme/css/bootstrap.min.css">
 
-          ga('create', 'UA-9178117-1', 'auto');
-          ga('send', 'pageview');
+    <link rel="stylesheet" href="theme/css/jquery.periodpicker.css" type="text/css">
+    <link rel="stylesheet" href="theme/css/jquery.timepicker.css" type="text/css">
+    <link rel="stylesheet" href="theme/js/sweetalert/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="theme/css/style.css">
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        </script>
-                    </head>
-    <body>
-        
-        <nav class="navbar navbar-default my-navbar">
+        ga('create', 'UA-9178117-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+<body>
+
+<nav class="navbar navbar-default my-navbar">
     <!--<nav class="navbar navbar-default">-->
     <div class="content-wrap">
         <!-- Brand and toggle -->
@@ -74,53 +74,53 @@
         <!--navbar collapsed-->
         <div class="collapse navbar-collapse my-collapse" id="navbar-limousine">
             <ul class="nav navbar-nav menu">
-                            <li class="menu__item  ">
+                <li class="menu__item  ">
                     <a class="menu__link " href="index.html"  >Home</a>
-                                    </li>
-                            <li class="menu__item  active">
+                </li>
+                <li class="menu__item  active">
                     <a class="menu__link " href="quote.php.html"  >Quote</a>
-                                    </li>
-                            <li class="menu__item  ">
+                </li>
+                <li class="menu__item  ">
                     <a class="menu__link " href="reservation.php.html"  >Reservation</a>
-                                    </li>
-                            <li class="menu__item  dropdown  ">
+                </li>
+                <li class="menu__item  dropdown  ">
                     <a class="menu__link  dropdown-toggle " href="fleet.php.html"   role="button" aria-haspopup="true"
-                                                                                                                                                                                                                        aria-expanded="false" >Our fleet</a>
-                                            <ul class="dropdown-menu my-dropdown">
-                                                        <li>
-                                <a class="my-dropdown__item" href="fleet-sedans.php.html" >Luxury Sedans</a>
-                            </li>
-                                                        <li>
-                                <a class="my-dropdown__item" href="fleet-suvs.php.html" >Luxury Suvs</a>
-                            </li>
-                                                        <li>
-                                <a class="my-dropdown__item" href="fleet-vans.php.html" >Luxury Van</a>
-                            </li>
-                                                        <li>
-                                <a class="my-dropdown__item" href="fleet-limos.php.html" >Luxury Limousines</a>
-                            </li>
-                                                        <li>
-                                <a class="my-dropdown__item" href="fleet-buses.php.html" >Luxury Buses</a>
-                            </li>
-                                                    </ul>
-                                    </li>
-                            <li class="menu__item  ">
-                    <a class="menu__link " href="services.php.html"  >Services</a>
-                                    </li>
-                            <li class="menu__item  ">
-                    <a class="menu__link " href="rates.php.html"  >Rates</a>
-                                    </li>
-                            <li class="menu__item  ">
-                    <a class="menu__link " href="faq.php.html"  >FAQ</a>
-                                    </li>
-                            <li class="menu__item  ">
-                    <a class="menu__link " href="reviews.php.html"  >Reviews</a>
-                                    </li>
-                            <li class="menu__item  ">
-                    <a class="menu__link " href="contact.php.html"  >Contact us</a>
-                                    </li>
+                       aria-expanded="false" >Our fleet</a>
+                    <ul class="dropdown-menu my-dropdown">
+                        <li>
+                            <a class="my-dropdown__item" href="fleet-sedans.php.html" >Luxury Sedans</a>
+                        </li>
+                        <li>
+                            <a class="my-dropdown__item" href="fleet-suvs.php.html" >Luxury Suvs</a>
+                        </li>
+                        <li>
+                            <a class="my-dropdown__item" href="fleet-vans.php.html" >Luxury Van</a>
+                        </li>
+                        <li>
+                            <a class="my-dropdown__item" href="fleet-limos.php.html" >Luxury Limousines</a>
+                        </li>
+                        <li>
+                            <a class="my-dropdown__item" href="fleet-buses.php.html" >Luxury Buses</a>
+                        </li>
                     </ul>
-    
+                </li>
+                <li class="menu__item  ">
+                    <a class="menu__link " href="services.php.html"  >Services</a>
+                </li>
+                <li class="menu__item  ">
+                    <a class="menu__link " href="rates.php.html"  >Rates</a>
+                </li>
+                <li class="menu__item  ">
+                    <a class="menu__link " href="faq.php.html"  >FAQ</a>
+                </li>
+                <li class="menu__item  ">
+                    <a class="menu__link " href="reviews.php.html"  >Reviews</a>
+                </li>
+                <li class="menu__item  ">
+                    <a class="menu__link " href="contact.php.html"  >Contact us</a>
+                </li>
+            </ul>
+
             <ul class="phones hidden-xs">
                 <li class="phones__item">
                     <!--<span class="phones__desc">toll free</span>-->
@@ -134,15 +134,15 @@
                 </li>
             </ul>
             <div class="top_login">
-                             <a href="login.html">Sign In</a>
-                 <a href="reg.php.html">Registration</a>
-                        </div>
+                <a href="login.html">Sign In</a>
+                <a href="reg.php.html">Registration</a>
+            </div>
         </div>
 
         <!--end collapsed-->
     </div>
 </nav>
-        <div class="content-wrap">
+<div class="content-wrap">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -265,9 +265,9 @@
                                     </div>
                                 </div>
                                 <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-<div id="_g-recaptcha"></div>
-<div class="g-recaptcha" data-sitekey="6LdC4zoUAAAAABP0VC97dJlVLaQC1G2GGG-5F1ky" data-size="invisible" data-callback="_submitForm" data-badge="bottomright"></div><script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>var _submitForm,_captchaForm,_captchaSubmit,_execute=true;</script><script>window.onload=function(){_captchaForm=document.querySelector("#_g-recaptcha").closest("form");_captchaSubmit=_captchaForm.querySelector('[type=submit]');_submitForm=function(){if(typeof _submitEvent==="function"){_submitEvent();grecaptcha.reset();}else{_captchaForm.submit();}};_captchaForm.addEventListener('submit',function(e){e.preventDefault();if(typeof _beforeSubmit==='function'){_execute=_beforeSubmit();}if(_execute){grecaptcha.execute();}});}</script>
+                                <div id="_g-recaptcha"></div>
+                                <div class="g-recaptcha" data-sitekey="6LdC4zoUAAAAABP0VC97dJlVLaQC1G2GGG-5F1ky" data-size="invisible" data-callback="_submitForm" data-badge="bottomright"></div><script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                                <script>var _submitForm,_captchaForm,_captchaSubmit,_execute=true;</script><script>window.onload=function(){_captchaForm=document.querySelector("#_g-recaptcha").closest("form");_captchaSubmit=_captchaForm.querySelector('[type=submit]');_submitForm=function(){if(typeof _submitEvent==="function"){_submitEvent();grecaptcha.reset();}else{_captchaForm.submit();}};_captchaForm.addEventListener('submit',function(e){e.preventDefault();if(typeof _beforeSubmit==='function'){_execute=_beforeSubmit();}if(_execute){grecaptcha.execute();}});}</script>
 
                             </div>
 
@@ -286,79 +286,79 @@
     </div>
 </div>
 
-        <footer >
-       <div>
-       <div class="wrap">
-           <div class="contacts">
-               <div class="container content-wrapper">
-                   <div class="row">
-                       <div class="col-sm-4">
-                           <h3 class="contacts__title">Address</h3>
-                           <hr class="contacts__line">
-                           <address>
+<footer >
+    <div>
+        <div class="wrap">
+            <div class="contacts">
+                <div class="container content-wrapper">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h3 class="contacts__title">Address</h3>
+                            <hr class="contacts__line">
+                            <address>
 
-                               <strong>Limousine Service</strong><br>
-                               <span><img src="theme/images/pin-icon.png"></span>16220 NE 12TH CT,<br> BELLEVUE WA 98008
-                           </address>
-                       </div>
-                       <div class="col-sm-5">
-                           <h3 class="contacts__title">Contact Us</h3>
-                           <hr class="contacts__line">
-                           <address>
-                               <strong>Reservations</strong><br>
-                               <span><img src="theme/images/phone-icon.png"></span><a
-                                   href="tel:4253726570">4253726570</a><br>
-                               <span><img src="theme/images/phone-icon.png"></span></i><a
-                                   href="tel:206-453-9128">206-453-9128</a><br>
-                               <span><img src="theme/images/mail-icon.png"></span><a href="mailto:INFO@SEATTLEELITETOWNCAR.COM">INFO@SEATTLEELITETOWNCAR.COM</a>
-                           </address>
-                       </div>
-                       <div class="col-sm-3">
-                           <h3 class="contacts__title">Follow Us</h3>
-                           <hr class="contacts__line">
-                           <div class="social-icons">
-                               <div class="icons">
-                                   <a href="https://www.facebook.com/elitetowncar/" target="_blank">
-                                       <i class="fa fa-facebook"></i>
-                                   </a>
-                               </div>
+                                <strong>Limousine Service</strong><br>
+                                <span><img src="theme/images/pin-icon.png"></span>16220 NE 12TH CT,<br> BELLEVUE WA 98008
+                            </address>
+                        </div>
+                        <div class="col-sm-5">
+                            <h3 class="contacts__title">Contact Us</h3>
+                            <hr class="contacts__line">
+                            <address>
+                                <strong>Reservations</strong><br>
+                                <span><img src="theme/images/phone-icon.png"></span><a
+                                        href="tel:4253726570">4253726570</a><br>
+                                <span><img src="theme/images/phone-icon.png"></span></i><a
+                                        href="tel:206-453-9128">206-453-9128</a><br>
+                                <span><img src="theme/images/mail-icon.png"></span><a href="mailto:INFO@SEATTLEELITETOWNCAR.COM">INFO@SEATTLEELITETOWNCAR.COM</a>
+                            </address>
+                        </div>
+                        <div class="col-sm-3">
+                            <h3 class="contacts__title">Follow Us</h3>
+                            <hr class="contacts__line">
+                            <div class="social-icons">
+                                <div class="icons">
+                                    <a href="https://www.facebook.com/elitetowncar/" target="_blank">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </div>
 
-                               <div class="icons">
-                                   <a href="https://plus.google.com/+Seattleelitetowncar" target="_blank">
-                                       <i class="fa fa-google-plus"></i>
-                                   </a>
-                               </div>
+                                <div class="icons">
+                                    <a href="https://plus.google.com/+Seattleelitetowncar" target="_blank">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </div>
 
-                               <div style="margin-top:8px;" id="yelp-biz-badge-plain-i8xK490z_vPddqxtXhx5vQ"><a href="http://yelp.com/biz/seattle-elite-town-car-bellevue-5?utm_medium=badge_button&amp;utm_source=biz_review_badge" target="_blank">Check out Seattle Elite Town Car on Yelp</a></div>    <script>(function(d, t) {var g = d.createElement(t);var s = d.getElementsByTagName(t)[0];g.id = "yelp-biz-badge-script-plain-i8xK490z_vPddqxtXhx5vQ";g.src = "//yelp.com/biz_badge_js/en_US/plain/i8xK490z_vPddqxtXhx5vQ.js";s.parentNode.insertBefore(g, s);g.onload = function() {document.querySelector('#yelp-biz-badge-plain-i8xK490z_vPddqxtXhx5vQ a').setAttribute('target', '_blank');}}(document, 'script'));</script>
-                           </div>
+                                <div style="margin-top:8px;" id="yelp-biz-badge-plain-i8xK490z_vPddqxtXhx5vQ"><a href="http://yelp.com/biz/seattle-elite-town-car-bellevue-5?utm_medium=badge_button&amp;utm_source=biz_review_badge" target="_blank">Check out Seattle Elite Town Car on Yelp</a></div>    <script>(function(d, t) {var g = d.createElement(t);var s = d.getElementsByTagName(t)[0];g.id = "yelp-biz-badge-script-plain-i8xK490z_vPddqxtXhx5vQ";g.src = "//yelp.com/biz_badge_js/en_US/plain/i8xK490z_vPddqxtXhx5vQ.js";s.parentNode.insertBefore(g, s);g.onload = function() {document.querySelector('#yelp-biz-badge-plain-i8xK490z_vPddqxtXhx5vQ a').setAttribute('target', '_blank');}}(document, 'script'));</script>
+                            </div>
 
-                           <a href="quote.php.html" class="btn btn-yellow">Get a quote</a>
-                       </div>
-                   </div>
-               </div>
-           </div>
-           <div class="copyright">
-               <div class="container content-wrapper">
-                   <div class="row">
-                       <div class="col-sm-12">
-                           <p class="text-center"><a target="_blank" href="http://webandad.com/">&copy; 2016 Limousine services . All right reserved. 
-                                   Powered by webandad</a></p>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
+                            <a href="quote.php.html" class="btn btn-yellow">Get a quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container content-wrapper">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p class="text-center"><a target="_blank" href="http://webandad.com/">&copy; 2016 Limousine services . All right reserved.
+                                    Powered by webandad</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>         <script src="theme/js/libs/jquery.min.js"></script>
-         <script src="theme/js/libs/bootstrap.min.js"></script>
-         <script src="theme/js/libs/jquery.viewportchecker.min.js"></script>
-         <script src="theme/js/libs/slick.min.js"></script>
+<script src="theme/js/libs/bootstrap.min.js"></script>
+<script src="theme/js/libs/jquery.viewportchecker.min.js"></script>
+<script src="theme/js/libs/slick.min.js"></script>
 
-         <!-- build:js -->
-         
-         <script src="theme/js/main.js"></script>
+<!-- build:js -->
 
-         <script src="theme/js/jquery.validate.min.js"></script>
+<script src="theme/js/main.js"></script>
+
+<script src="theme/js/jquery.validate.min.js"></script>
 <script src="theme/js/jquery.periodpicker.full.min.js"></script>
 <script src="theme/js/jquery.datetimepicker.js"></script>
 
@@ -387,7 +387,7 @@
         minDate:moment().format("MM/DD/YYYY")
 
     });
-    
+
     $('.datepicker-s').datetimepicker();
 
     $('.datetimer').TimePickerAlone({
@@ -420,5 +420,5 @@
 
 </script>
 
-    </body>
+</body>
 </html>
