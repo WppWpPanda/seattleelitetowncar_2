@@ -63,7 +63,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <form method="post" id="quote-form" role="form" action="quote.php.html">
+                        <form method="post" id="quote-form" role="form">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <input type="hidden" name="send_quote" value="send"/>
@@ -150,8 +150,8 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                         <button type="submit" value="" class="btn-yellow contact-form__btn">Get a quote
                                         </button>
                                     </div>
-                                    <div class="col-xs-12 col-md-12" style="text-align: center"><span id="total-error"
-                                                                                                      class="valid-error">Sorry, something went wrong. Try later.</span>
+                                    <div class="col-xs-12 col-md-12" style="text-align: center">
+                                        <span id="total-error" class="valid-error"></span>
                                     </div>
                                 </div>
                             </div>
@@ -162,5 +162,77 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('quote-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const messageEl = document.getElementById('total-error');
+            const originalBtnText = submitBtn.innerHTML;
+
+            // Показываем индикатор загрузки
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner">Sending...</span>';
+            messageEl.style.display = 'none';
+
+            // Собираем данные формы
+            const formData = new FormData(form);
+
+            // Добавляем CSRF-токен (если используете)
+          //  formData.append('csrf_token', '<?php echo $_SESSION["csrf_token"] ?? ""; ?>');
+
+            // Отправляем AJAX запрос
+            fetch('/core/send_quote.php', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error('Network error');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        // Успешная отправка
+                        messageEl.style.color = 'green';
+                        messageEl.textContent = data.message || 'Your quote request has been sent!';
+                        form.reset();
+                    } else {
+                        // Ошибка
+                        messageEl.style.color = 'red';
+                        messageEl.textContent = data.message || 'Error sending request';
+                    }
+                    messageEl.style.display = 'block';
+                })
+                .catch(error => {
+                    messageEl.style.color = 'red';
+                    messageEl.textContent = 'Connection error. Please try again.';
+                    messageEl.style.display = 'block';
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                });
+        });
+    </script>
+
+    <style>
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0,0,0,.1);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php';

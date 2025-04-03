@@ -10,19 +10,19 @@ const STR = 'dxMDdmjOlvx';
 const PHP = '.php';
 const INDEX = 'index.php';
 
-const MAIL_DRIVER='smtp';
-const MAIL_HOST='smtp.sendgrid.net';
-const MAIL_PORT='587';
-const MAIL_USERNAME='apikey';
+const MAIL_DRIVER = 'smtp';
+const MAIL_HOST = 'smtp.sendgrid.net';
+const MAIL_PORT = '587';
+const MAIL_USERNAME = 'apikey';
 
 require_once 'keys.php';
-const MAIL_ENCRYPTION='tls';
-const MAIL_FROM_NAME='SeattleEliteTownCar';
-const MAIL_FROM_ADDRESS='no-reply@uppointment.com';
-const MAIL_RECIPIENT_ADDRESS='panda@wp-panda.pro';
+const MAIL_ENCRYPTION = 'tls';
+const MAIL_FROM_NAME = 'SeattleEliteTownCar';
+const MAIL_FROM_ADDRESS = 'no-reply@uppointment.com';
+const MAIL_RECIPIENT_ADDRESS = 'panda@wp-panda.pro';
 
 
-$db =  [
+$db = [
     'db' => [
         'default' => [
             'host' => '127.0.0.1',
@@ -56,7 +56,7 @@ $config['header'] = [
             '/theme/css/slick.css',
             '/theme/css/bootstrap.min.css',
             '/theme/css/animate.min.css',
-            '/theme/css/style.css'
+
         ],
         'logo' => [
             'src' => '/theme/images/logo_n.png',
@@ -190,8 +190,17 @@ $config['header'] = [
             '/theme/js/bg.js'
         ]
     ]
+
 ];
 
+
+if (is_quote_page()) :
+    $config['header']['assets']['styles'][] = 'theme/css/jquery.periodpicker.css';
+    $config['header']['assets']['styles'][] = 'theme/css/jquery.timepicker.css';
+    $config['header']['assets']['styles'][] = 'theme/js/sweetalert/sweetalert2.min.css';
+endif;
+
+$config['header']['assets']['styles'][] = '/theme/css/style.css';
 
 // config/footer_config.php
 
@@ -298,6 +307,8 @@ if (is_quote_page()) {
     $config['footer']['scripts'][] = '/theme/js/jquery.periodpicker.full.min.js';
     $config['footer']['scripts'][] = '/theme/js/jquery.datetimepicker.js';
 }
+
+$config['footer']['scripts'][] = '/theme/js/sweetalert/sweetalert2.min.js';
 
 
 $GLOBALS['wpp_config'] = $config;

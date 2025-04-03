@@ -120,133 +120,41 @@ $config = $wpp_config['footer'];
     <?php if(is_quote_page()) : ?>
 
     jQuery(function ($) {
-        // Wait until DOM is fully loaded
-        $(document).ready(function () {
-            // Initialize date variables
-            var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1; // January is 0!
-            var yyyy = today.getFullYear();
 
-            // Initialize periodpicker with error handling
-            try {
-                if ($.fn.periodpicker && $('.datepicker').length) {
-                    alert('sss')
-                    $('.datepicker').periodpicker({
-                        likeXDSoftDateTimePicker: true,
-                        norange: true,
-                        cells: [1, 1],
-                        withoutBottomPanel: true,
-                        yearsLine: false,
-                        title: false,
-                        fullsizeButton: false,
-                        hideAfterSelect: true,
-                        hideOnBlur: true,
-                        clearButtonInButton: true,
-                        formatDate: 'MM/DD/YYYY',
-                        minDate: moment().format("MM/DD/YYYY")
-                    });
-                }
-            } catch (e) {
-                console.error('Periodpicker initialization error:', e);
-            }
+        // date
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
 
-            // Initialize datetimepicker with error handling
-            try {
-                if ($.fn.datetimepicker && $('.datepicker-s').length) {
-                    $('.datepicker-s').datetimepicker();
-                }
-            } catch (e) {
-                console.error('Datetimepicker initialization error:', e);
-            }
 
-            // Initialize TimePickerAlone with error handling
-            try {
-                if ($.fn.TimePickerAlone && $('.datetimer').length) {
-                    $('.datetimer').TimePickerAlone({
-                        inputFormat: 'hh:mm A',
-                        steps: [1, 15],
-                        seconds: false,
-                        defaultTime: ''
-                    });
-                }
-            } catch (e) {
-                console.error('TimePickerAlone initialization error:', e);
-            }
+        $('.datepicker').periodpicker({
+            likeXDSoftDateTimePicker: true,
+            norange: true,
+            cells: [1, 1],
+            withoutBottomPanel: true,
+            yearsLine: false,
+            title: false,
+            fullsizeButton: false,
+            hideAfterSelect: true,
+            hideOnBlur: true,
+            clearButtonInButton: true,
+            formatDate: 'MM/DD/YYYY',
+            minDate:moment().format("MM/DD/YYYY")
 
-            // Calendar click handler with existence check
-            $(document).on('click', '.calendar', function (e) {
-                e.preventDefault();
+        });
 
-                // 1. Безопасный поиск элемента
-                const $container = $(this).closest('.datepicker-wrapper');
-                if (!$container.length) {
-                    console.error('Контейнер .datepicker-wrapper не найден');
-                    return;
-                }
+        $('.datepicker-s').datetimepicker();
 
-                const $datepicker = $container.find('.datepicker');
+        $('.datetimer').TimePickerAlone({
+            inputFormat: 'hh:mm A',
+            steps:[1,15],
+            seconds: false,
+            defaultTime: ''
+        });
 
-                // 2. Проверка видимости элемента
-                if (!$datepicker.length || $datepicker.is(':hidden')) {
-                    console.error('Элемент .datepicker не найден или скрыт');
-                    $datepicker.show(); // Пытаемся показать
-                    if (!$datepicker.is(':visible')) {
-                        $datepicker.css({
-                            position: 'absolute',
-                            left: '-9999px',
-                            display: 'block'
-                        });
-                    }
-                }
-
-                // 3. Глубокая проверка плагина
-                if (!$.fn.periodpicker || typeof $datepicker.periodpicker !== 'function') {
-                    console.error('Плагин periodpicker не загружен правильно');
-                    return;
-                }
-
-                // 4. Безопасная инициализация
-                try {
-                    // Проверяем, инициализирован ли уже
-                    if (!$datepicker.data('periodpicker-initialized')) {
-                        $datepicker.periodpicker({
-                            likeXDSoftDateTimePicker: true,
-                            norange: true,
-                            cells: [1, 1],
-                            withoutBottomPanel: true,
-                            // Добавляем важные параметры для стабильности
-                            position: 'bottom',
-                            constrainInput: true,
-                            autoUpdateInput: false
-                        }).data('periodpicker-initialized', true);
-                    }
-
-                    // 5. Безопасный вызов show
-                    const instance = $datepicker.data('periodpicker');
-                    if (instance && typeof instance.show === 'function') {
-                        instance.show();
-                    } else {
-                        $datepicker.periodpicker('show');
-                    }
-
-                } catch (e) {
-                    console.error('Фатальная ошибка periodpicker:', {
-                        error: e,
-                        element: $datepicker,
-                        parentHtml: $container.html(),
-                        plugin: $.fn.periodpicker
-                    });
-
-                    // 6. Аварийный fallback
-                    $datepicker.replaceWith(`
-            <input type="date"
-                   class="datepicker-fallback"
-                   value="${$datepicker.val()}"
-                   min="${new Date().toISOString().split('T')[0]}">
-        `);
-                }
-            });
+        $('.calendar').click(function() {
+            $(this).parent().find('.datepicker').periodpicker('show');
         });
     });
 
