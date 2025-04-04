@@ -32,19 +32,33 @@ class Auth {
     }
 
     public function login($email, $password) {
+        // Получаем пользователя из базы
         $user = $this->db->query("SELECT * FROM users WHERE email = ?s", [$email])->fetch();
 
         if (!$user) {
             throw new Exception("Неверный email");
         }
 
-        $pwd_peppered = hash_hmac("sha256", $password, STR);
-        // Хеширование пароля
+        // Если пароль отсутствует (NULL или пустая строка)
+        if (empty($user['password'])) {
+            // Хешируем и сохраняем новый пароль
+            $pwd_peppered = hash_hmac("sha256", $password, STR);
+            $hashed_password = password_hash($pwd_peppered, PASSWORD_DEFAULT);
 
-        if( ! password_verify( $pwd_peppered, $user['password'] )) {
-            throw new Exception($user['password'] . '   //  ' . $pwd_peppered );
+            // Обновляем пароль в базе
+            $this->db->query("UPDATE users SET password = ?s WHERE id = ?i",
+                [$hashed_password, $user['id']]);
+
+            // Устанавливаем обновленный пароль в объект пользователя
+            $user['password'] = $hashed_password;
         }
-        //$2y$10$qmwreo1v.JMphIrQirnfSejltDpvB8ue35k7E0I57LciKcV56VGlS
+
+        // Проверяем пароль
+        $pwd_peppered = hash_hmac("sha256", $password, STR);
+
+        if (!password_verify($pwd_peppered, $user['password'])) {
+            throw new Exception("Неверный пароль");
+        }
 
         // Стартуем сессию если еще не начата
         if (session_status() === PHP_SESSION_NONE) {
@@ -59,6 +73,7 @@ class Auth {
 
         return true;
     }
+
 
     public function logout() {
         session_start();
@@ -75,6 +90,12 @@ class Auth {
 
     public function getUser() {
         return $_SESSION['user'] ?? null;
+    }
+
+    public function getUserID()
+    {
+        $user = $this->getUser();
+        return !empty($user['id']) ? $user['id'] : false;
     }
 
     public function emailExists($email) {
@@ -120,6 +141,33 @@ class Auth {
             return $t->fetch();
         } catch (Exception $e) {
             error_log("Email check failed: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Получает все заказы пользователя из таблицы old_orders
+     *
+     * @param int $user_id ID пользователя
+     * @return array|false Массив заказов или false при ошибке
+     */
+    public function getOldOrdersByUserId($user_id) {
+        try {
+            $result = $this->db->query(
+                "SELECT * FROM old_orders WHERE user_ID = ?s ORDER BY created_at DESC",
+                [$user_id]
+            );
+
+            $orders = [];
+            while ($row = $result->fetch()) {
+                // Десериализуем данные заказов
+                $row['orders'] = unserialize($row['orders']);
+                $orders[] = $row;
+            }
+
+            return $orders;
+        } catch (Exception $e) {
+            error_log("Failed to get old orders for user {$user_id}: " . $e->getMessage());
             return false;
         }
     }

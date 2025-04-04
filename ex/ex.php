@@ -1,14 +1,14 @@
 <?php
 /*
-Plugin Name: User Data Array Exporter
-Description: Exports user data to file via array processing
-Version: 3.1
+Plugin Name: User Data Array to Text Exporter
+Description: Exports user data as PHP array to text file
+Version: 3.3
 Author: WP Panda
 */
 
 defined('ABSPATH') or die('Direct access denied!');
 
-class UserDataArrayExporter {
+class UserDataArrayTextExporter {
     private $info_fields = [
         'address',
         'company',
@@ -32,7 +32,7 @@ class UserDataArrayExporter {
     public function add_admin_menu() {
         add_users_page(
             'User Data Export',
-            'Export to File',
+            'Export to Text File',
             'manage_options',
             'user-data-export',
             [$this, 'render_admin_page']
@@ -45,7 +45,7 @@ class UserDataArrayExporter {
         }
 
         echo '<div class="wrap">';
-        echo '<h1>User Data Export</h1>';
+        echo '<h1>User Data Export (Text File)</h1>';
 
         if (isset($_GET['export_result'])) {
             $this->show_export_result($_GET['export_result']);
@@ -53,7 +53,7 @@ class UserDataArrayExporter {
 
         echo '<form method="post" action="'.admin_url('users.php?page=user-data-export').'">';
         wp_nonce_field('user_data_export_action');
-        echo '<p>Export users with detailed meta information</p>';
+        echo '<p>Export users with detailed meta information as PHP array in text file</p>';
         submit_button('Export Data', 'primary', 'submit_export');
         echo '</form>';
         echo '</div>';
@@ -65,7 +65,7 @@ class UserDataArrayExporter {
         }
 
         $data = $this->prepare_export_data();
-        $result = $this->write_to_file($data);
+        $result = $this->write_array_to_text_file($data);
 
         wp_redirect(add_query_arg(
             'export_result',
@@ -87,48 +87,32 @@ class UserDataArrayExporter {
 
         $export_data = [];
 
-        // Add headers
-        $export_data[] = array_merge(
-            ['User ID', 'Email'],
-            $this->info_fields,
-            ['User Orders']
-        );
-
         foreach ($users as $user) {
             $user_info = maybe_unserialize(get_user_meta($user->ID, '_wpp_user_info', true));
             $user_orders = maybe_unserialize(get_user_meta($user->ID, '_wpp_user_orders', true));
 
-            $row = [
-                'User ID' => $user->ID,
-                'Email' => $user->user_email
+            $user_entry = [
+                'basic_info' => [
+                    'ID' => $user->ID,
+                    'email' => $user->user_email
+                ],
+                'meta_fields' => [],
+                'orders' => $this->process_orders($user_orders)
             ];
 
             // Process info fields
             foreach ($this->info_fields as $field) {
-                $row[$field] = $this->get_safe_value($user_info, $field);
+                if (is_array($user_info) && isset($user_info[$field])) {
+                    $user_entry['meta_fields'][$field] = $this->sanitize_value($user_info[$field]);
+                } else {
+                    $user_entry['meta_fields'][$field] = null;
+                }
             }
 
-            // Process orders
-            $row['User Orders'] = $this->process_orders($user_orders);
-
-            $export_data[] = $row;
+            $export_data[] = $user_entry;
         }
 
         return $export_data;
-    }
-
-    private function get_safe_value($data, $key) {
-        if (!is_array($data) || !isset($data[$key])) {
-            return '';
-        }
-
-        $value = $data[$key];
-
-        if (is_array($value) || is_object($value)) {
-            return json_encode($value, JSON_UNESCAPED_UNICODE);
-        }
-
-        return $this->sanitize_text($value);
     }
 
     private function process_orders($orders) {
@@ -137,50 +121,58 @@ class UserDataArrayExporter {
             foreach ($orders as $order) {
                 $processed[] = $this->process_single_order($order);
             }
-            return implode("\n---\n", $processed);
+            return $processed;
         }
-        return $this->process_single_order($orders);
+        return [$this->process_single_order($orders)];
     }
 
     private function process_single_order($order) {
         $order = maybe_unserialize($order);
 
         if (is_array($order) || is_object($order)) {
-            $order = print_r($order, true);
+            $clean_order = [];
+            foreach ((array)$order as $key => $value) {
+                $clean_order[$key] = $this->sanitize_value($value);
+            }
+            return $clean_order;
         }
 
-        return $this->sanitize_text($order);
+        return $this->sanitize_value($order);
     }
 
-    private function sanitize_text($text) {
-        $text = html_entity_decode($text);
-        $text = wp_strip_all_tags($text);
-        $text = preg_replace('/\s+/', ' ', $text);
-        return trim($text);
+    private function sanitize_value($value) {
+        if (is_array($value) || is_object($value)) {
+            return $value; // Keep arrays/objects as is
+        }
+
+        $value = maybe_unserialize($value);
+        $value = html_entity_decode($value);
+        $value = wp_strip_all_tags($value);
+        return trim($value);
     }
 
-    private function write_to_file($data) {
+    private function write_array_to_text_file($data) {
         $upload_dir = wp_upload_dir();
         $filename = 'user_export_'.date('Ymd_His').'.txt';
         $filepath = $upload_dir['path'].'/'.$filename;
 
-        $content = "User Data Export\n";
-        $content .= "Generated: ".date('Y-m-d H:i:s')."\n\n";
+        $content = "=================================\n";
+        $content .= "USER DATA EXPORT (PHP ARRAY FORMAT)\n";
+        $content .= "Generated: ".date('Y-m-d H:i:s')."\n";
+        $content .= "Total users: ".count($data)."\n";
+        $content .= "=================================\n\n";
 
-        foreach ($data as $row) {
-            if (is_array($row)) {
-                $content .= "--- USER RECORD ---\n";
-                foreach ($row as $key => $value) {
-                    $content .= sprintf("%-15s: %s\n", $key, $value);
-                }
-            } else {
-                // Headers row
-                $content .= implode(" | ", $row)."\n";
-            }
-            $content .= "\n";
-        }
+        $content .= "<?php\n\n";
+        $content .= "$"."user_data = ".var_export($data, true).";\n\n";
+        $content .= "?>";
 
         $bytes = file_put_contents($filepath, $content);
+
+        // Set secure permissions
+        if ($bytes !== false) {
+            chmod($filepath, 0644);
+        }
+
         return $bytes !== false;
     }
 
@@ -198,8 +190,15 @@ class UserDataArrayExporter {
                 $file_url = $upload_dir['url'].'/'.basename($latest_file);
 
                 echo '<div class="notice notice-success">';
-                echo '<p>File successfully generated! <a href="'.$file_url.'" download>Download Export File</a></p>';
+                echo '<p>File successfully generated! <a href="'.$file_url.'" download>Download Text File</a></p>';
                 echo '<p><small>Path: '.esc_html($latest_file).'</small></p>';
+
+                // Display sample data
+                $sample_data = array_slice($this->prepare_export_data(), 0, 1);
+                echo '<details><summary>View sample data structure</summary><pre>';
+                echo htmlspecialchars("<?php\n\n$"."user_data = ".var_export($sample_data, true).";\n\n?>");
+                echo '</pre></details>';
+
                 echo '</div>';
             }
         } else {
@@ -210,4 +209,4 @@ class UserDataArrayExporter {
     }
 }
 
-new UserDataArrayExporter();
+new UserDataArrayTextExporter();

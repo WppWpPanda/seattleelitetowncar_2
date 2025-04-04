@@ -3,49 +3,57 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
 
 $auth = new Auth();
 
+if (!empty($_GET['logout'])) {
+    $auth->logout();
+}
+
 if (!$auth->isLoggedIn()) {
     header("Location: login.php");
     exit;
 }
+
+$user_id = $auth->getUserId();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php';
 defined('ABS_PATH' or exit('No direct script access allowed')); ?>
-<style>
-    /* Стили для сообщений */
-    .alert {
-        padding: 10px 15px;
-        margin: 10px 0;
-        border-radius: 4px;
-        text-align: center;
-    }
+    <style>
+        /* Стили для сообщений */
+        .alert {
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            text-align: center;
+        }
 
-    .alert-success {
-        background-color: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
-    }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
 
-    .alert-danger {
-        background-color: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
-    }
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
 
-    /* Стили для спиннера */
-    .spinner-border {
-        display: inline-block;
-        width: 1rem;
-        height: 1rem;
-        vertical-align: text-bottom;
-        border: 0.2em solid currentColor;
-        border-right-color: transparent;
-        border-radius: 50%;
-        animation: spinner-border .75s linear infinite;
-    }
+        /* Стили для спиннера */
+        .spinner-border {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            vertical-align: text-bottom;
+            border: 0.2em solid currentColor;
+            border-right-color: transparent;
+            border-radius: 50%;
+            animation: spinner-border .75s linear infinite;
+        }
 
-    @keyframes spinner-border {
-        to { transform: rotate(360deg); }
-    }
-</style>
+        @keyframes spinner-border {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
     <section class="">
         <div class="content-wrap">
             <div class="container-fluid">
@@ -55,6 +63,8 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                             <h2 class="header-short__text">My Account</h2>
                             <div class="header-short__line"></div>
                             <div class="header-short__line"></div>
+                            <a href="/profile<?php echo PHP ?>?logout=1" class="btn-yellow header-short__btn">Log
+                                Out</a>
                         </div>
                     </div>
                 </div>
@@ -63,7 +73,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
         <div class="wrap bg-light">
             <div class="content-wrap content-wrap--top">
                 <div class="container-fluid">
-                    <?php $user = $auth->getUser_by_id($auth->getUser()['id']); ?>
+                    <?php $user = $auth->getUser_by_id($user_id); ?>
                     <div class="row">
                         <div class="col-xs-12">
                             <form method="post" id="profile-form" role="form" onsubmit="return submitForm(this);">
@@ -250,7 +260,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                 </div>
                                 <div id="submit" class="col-sm-offset-3 col-sm-6 top-margin">
                                     <div class="form-group">
-                                        <button type="submit" class="btn-yellow contact-form__btn">submit</button>
+                                        <button type="submit" class="btn-yellow contact-form__btn">update</button>
                                     </div>
                                     <div id="form-messages"
                                          style="display: none; text-align: center; margin-top: 15px;"></div>
@@ -262,6 +272,129 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
             </div>
         </div>
     </section>
+
+<?php
+var_dump($user_id);
+
+$old_orders = $auth->getOldOrdersByUserId($user_id);
+
+$orders = array();
+$i = 1;
+if (!empty($old_orders) && !empty($old_orders[0]) && !empty($old_orders[0]['orders'])) {
+
+    foreach ($old_orders[0]['orders'] as $order) {
+
+
+        // Извлекаем дату и время
+        preg_match('/Date\s*:\s*(\d{2}\/\d{2}\/\d{4})/', $order, $dateMatches);
+        preg_match('/Time\s*:\s*(\d{1,2}:\d{2}\s*[AP]M)/i', $order, $timeMatches);
+
+        if (isset($dateMatches[1]) && isset($timeMatches[1])) {
+            // Преобразуем дату в нужный формат
+            $date = DateTime::createFromFormat('d/m/Y g:i A', $dateMatches[1] . ' ' . $timeMatches[1]);
+
+            // Форматируем вывод
+            $orderDate = $date->format('d.m.Y H:i A');
+
+            $title = "Order date: " . $orderDate;
+        } else {
+            $title = "Undefined Date";
+        }
+
+
+        // Разбиваем на секции
+        $sections = [
+            'Passenger information',
+            'Ride details',
+            'Payment Details'
+        ];
+
+// Форматируем текст
+        $formattedText = '';
+        $currentSection = '';
+        $lines = explode(' ', $order);
+
+        foreach ($lines as $word) {
+            // Проверяем, является ли слово началом новой секции
+            foreach ($sections as $section) {
+                if (strpos($word, $section) === 0) {
+                    $currentSection = $section;
+                    $formattedText .= "\n\n" . $section . "\n";
+                    continue 2;
+                }
+            }
+
+            // Добавляем двоеточие после метки
+            if (strpos($word, ':') !== false) {
+                $formattedText .= "\n" . $word . ' ';
+            } else {
+                $formattedText .= $word . ' ';
+            }
+        }
+
+// Удаляем лишние пробелы и переносы в начале/конце
+        $formattedText = trim($formattedText);
+
+
+        $orders[] = [
+            'id' => 'faq-' . $i,
+            'question' => $title,
+            'answer' => htmlspecialchars($formattedText)
+        ];
+
+        $i++;
+    }
+}
+
+
+$faq_settings = array(
+    'faq_items' => $orders,
+    'accessibility' => array(
+        'expand_text' => 'Expand Order',
+        'collapse_text' => 'Collapse Order'
+    )
+);
+if(!empty($faq_settings)){
+?>
+    <section>
+        <div class="wrap bg-light">
+            <div id="faq-content" class="content-wrap">
+                <br>
+                <br>
+                <h2>Your Orders</h2>
+                <div class="panel-group faq-wrap" id="accordion" role="tablist" aria-multiselectable="true">
+                    <?php foreach ($faq_settings['faq_items'] as $index => $faq_item): ?>
+                        <div class="panel panel-default faq-block">
+                            <div class="panel-heading faq-block__heading<?php echo $index === 0 ? '' : ' collapsed'; ?>"
+                                 role="tab"
+                                 id="heading-<?php echo $index; ?>"
+                                 data-toggle="collapse"
+                                 data-parent="#accordion"
+                                 href="#<?php echo $faq_item['id']; ?>"
+                                 aria-expanded="false"
+                                 aria-controls="<?php echo $faq_item['id']; ?>"
+                                 class=""
+                            >
+                                <h4 class="panel-title faq-block__title">
+                                    <?php echo $faq_item['question']; ?>
+                                    <span class="sr-only"><?php echo $index === 0 ? $faq_settings['accessibility']['collapse_text'] : $faq_settings['accessibility']['expand_text']; ?></span>
+                                </h4>
+                            </div>
+                            <div id="<?php echo $faq_item['id']; ?>"
+                                 class="panel-collapse collapse <?php echo $index === 0 ? 'in' : ''; ?>"
+                                 role="tabpanel"
+                                 aria-labelledby="heading-<?php echo $index; ?>">
+                                <div class="panel-body faq-block__body">
+                                    <?php echo $faq_item['answer']; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php } ?>
     <script>
 
         function validateForm(form) {
@@ -308,7 +441,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
             const formData = new FormData(form);
 
             // Добавляем CSRF-токен (если используете)
-           // formData.append('csrf_token', '<?php echo $_SESSION["csrf_token"] ?? ""; ?>');
+            // formData.append('csrf_token', '<?php echo $_SESSION["csrf_token"] ?? ""; ?>');
 
             // Отправляем AJAX-запрос
             fetch('/core/update_profile.php', {
@@ -377,7 +510,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
         }
 
         // Установка выбранного значения для штата
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const stateSelect = document.getElementById('state');
             const currentState = "<?php echo !empty($user['state']) ? $user['state'] : ''; ?>";
             if (currentState && stateSelect) {
