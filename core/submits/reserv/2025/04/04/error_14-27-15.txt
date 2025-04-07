@@ -1,0 +1,58 @@
+Error: SMTP Error: Could not authenticate.
+Data: Array
+(
+    [passenger] => Array
+        (
+            [name] => marina
+            [company] => Test buisness 1
+            [address] => Street 1
+            [email] => webandad@gmail.com
+            [mobile_phone] => 0994544330
+            [daytime_phone] => 83422469520
+        )
+
+    [ride] => Array
+        (
+            [vehicle] => Luxury Sedan
+            [service] => Point to point
+            [date] => 04/23/2025
+            [time] => 04:26 PM
+            [passengers] => 5
+            [bags] => 5
+            [pickup_type] => street
+            [pickup_details] => Array
+                (
+                    [address] => Street 1
+                    [phone] => 0994544330
+                )
+
+            [destination_type] => street
+            [destination_details] => Array
+                (
+                    [address] => 4375 Paris St
+                    [phone] => 0994544330
+                )
+
+        )
+
+    [payment] => Array
+        (
+            [method] => credit_card
+            [details] => Array
+                (
+                    [card_name] => ыыыыыыыы
+                    [card_number] => 555555
+                    [exp_date] => 5555555555555555
+                    [cvv] => 55555555555
+                    [billing_address] => 
+                    [billing_city] => 
+                    [billing_state] => MT
+                    [billing_zip] => 
+                )
+
+        )
+
+    [additional_info] => вввввввввввввввв
+    [ip] => 127.0.0.1
+    [timestamp] => 2025-04-04 14:27:14
+)

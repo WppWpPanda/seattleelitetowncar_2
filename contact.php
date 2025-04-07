@@ -51,7 +51,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                 <div class="row">
                                     <div class="col-xs-1 col-xs-offset-1">
                                         <div class="contacts-info__item"><img
-                                                    src="/theme/images/icons/con_phone_icon.png"></div>
+                                                    src="/assets/images/icons/con_phone_icon.png"></div>
                                     </div>
                                     <div class="col-xs-9">
                                         <div class="contacts-info__item"><a href="tel:4253726570">4253726570</a>
@@ -63,7 +63,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                 <div class="row">
                                     <div class="col-xs-1 col-xs-offset-1">
                                         <div class="contacts-info__item"><img
-                                                    src="/theme/images/icons/con_phone_icon.png"></div>
+                                                    src="/assets/images/icons/con_phone_icon.png"></div>
                                     </div>
                                     <div class="col-xs-9">
                                         <div class="contacts-info__item">
@@ -77,7 +77,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                 <div class="row">
                                     <div class="col-xs-1 col-xs-offset-1">
                                         <div class="contacts-info__item"><img
-                                                    src="/theme/images/icons/con_mail_icon.png"></div>
+                                                    src="/assets/images/icons/con_mail_icon.png"></div>
                                     </div>
                                     <div class="col-xs-9">
                                         <div class="contacts-info__item"><a href="mailto: INFO@SEATTLEELITETOWNCAR.COM">INFO@SEATTLEELITETOWNCAR.COM</a>

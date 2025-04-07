@@ -55,8 +55,8 @@ $fleetConfig = [
         ]
     ],
     'icons' => [
-        'capacity' => '/theme/images/icons/upto.png',
-        'luggage' => '/theme/images/icons/case.png'
+        'capacity' => '/assets/images/icons/upto.png',
+        'luggage' => '/assets/images/icons/case.png'
     ]
 ];
 

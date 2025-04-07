@@ -12,7 +12,7 @@ $config = $wpp_config['footer'];
                             <div class="view-list__container">
                                 <a class="view-list__link" href="<?php echo htmlspecialchars($item['href']) ?>"
                                    title="<?php echo htmlspecialchars($item['title']) ?>"
-                                   aria-label="<?php echo htmlspecialchars($item['title']) ?>">
+                                   <!--aria-label="--><?php /*echo htmlspecialchars($item['title']) */?>">
                                     <div class="view-list__icon">
                                         <img class="view-list__img" src="<?php echo htmlspecialchars($item['icon']) ?>"
                                              alt="<?php echo htmlspecialchars($item['alt']) ?>" loading="lazy">
@@ -35,6 +35,14 @@ $config = $wpp_config['footer'];
                         <h3 class="contacts__title"><?php echo htmlspecialchars($config['addressBlock']['title']) ?></h3>
                         <hr class="contacts__line" aria-hidden="true">
                         <address><?php echo $config['addressBlock']['content'] ?></address>
+                        <nav class="footer-nav">
+                            <ul>
+                                <li><a href="/blog">Blog</a></li>
+                                <li>
+                                    <a href="/privacy-policy">Privacy policy</a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
 
                     <!-- Contacts Block -->
@@ -48,9 +56,9 @@ $config = $wpp_config['footer'];
                     <div class="col-sm-3">
                         <h3 class="contacts__title">Follow Us</h3>
                         <hr class="contacts__line" aria-hidden="true">
-                        <div class="social-icons" role="list">
+                        <div class="social-icons">
                             <?php foreach ($config['socialLinks'] as $social): ?>
-                                <div class="icons" role="listitem">
+                                <div class="icons">
                                     <a href="<?php echo htmlspecialchars($social['href']) ?>" target="_blank"
                                        rel="noopener noreferrer"
                                        title="<?php echo htmlspecialchars($social['label']) ?>">
@@ -62,7 +70,7 @@ $config = $wpp_config['footer'];
 
                             <div style="margin-top:8px;" id="<?php echo $config['yelpBadge']['id'] ?>">
                                 <a href="<?php echo $config['yelpBadge']['link'] ?>" target="_blank"
-                                   rel="noopener noreferrer">
+                                   rel="noopener noreferrer" class="ss">
                                     <?php echo $config['yelpBadge']['text'] ?>
                                 </a>
                             </div>
@@ -244,7 +252,7 @@ $config = $wpp_config['footer'];
                 }
 
                 // Показываем индикатор загрузки
-                submitBtn.prop('disabled', true).html('<span class="spinner">Sending...</span>');
+                submitBtn.prop('disabled', true).html('<span class="spinner"></span>Sending...');
                 messageEl.hide();
 
                 // Собираем данные формы
@@ -311,40 +319,6 @@ $config = $wpp_config['footer'];
             vertical-align: middle;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .agreed {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            margin: 10px 0;
-        }
-        .agreed__checkbox {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #ccc;
-            border-radius: 3px;
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .agreed__checkbox span {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: transparent;
-            transition: all 0.3s ease;
-        }
-        .agreed__checkbox span.agreed__checked {
-            background-color: #4CAF50;
-        }
-        .agreed__text {
-            user-select: none;
-            transition: all 0.3s ease;
-        }
-        .hidden {
-            display: none !important;
-        }
     </style>
     <script>
         jQuery(function ($) {
@@ -354,134 +328,6 @@ $config = $wpp_config['footer'];
             var mm = today.getMonth() + 1; //January is 0!
             var yyyy = today.getFullYear();
 
-            $('#country').change(function () {
-                var country = $(this).val();
-
-                var usStates = '<select id="state" type="text" class="form-control required" placeholder="" name="state">' +
-                    '<option value="">State</option>' +
-                    '<option value="AL">Alabama</option>' +
-                    '<option value="AK">Alaska</option>' +
-                    '<option value="AZ">Arizona</option>' +
-                    '<option value="AR">Arkansas</option>' +
-                    '<option value="CA">California</option>' +
-                    '<option value="CO">Colorado</option>' +
-                    '<option value="CT">Connecticut</option>' +
-                    '<option value="DE">Delaware</option>' +
-                    '<option value="DC">District Of Columbia</option>' +
-                    '<option value="FL">Florida</option>' +
-                    '<option value="GA">Georgia</option>' +
-                    '<option value="HI">Hawaii</option>' +
-                    '<option value="ID">Idaho</option>' +
-                    '<option value="IL">Illinois</option>' +
-                    '<option value="IN">Indiana</option>' +
-                    '<option value="IA">Iowa</option>' +
-                    '<option value="KS">Kansas</option>' +
-                    '<option value="KY">Kentucky</option>' +
-                    '<option value="LA">Louisiana</option>' +
-                    '<option value="ME">Maine</option>' +
-                    '<option value="MD">Maryland</option>' +
-                    '<option value="MA">Massachusetts</option>' +
-                    '<option value="MI">Michigan</option>' +
-                    '<option value="MN">Minnesota</option>' +
-                    '<option value="MS">Mississippi</option>' +
-                    '<option value="MO">Missouri</option>' +
-                    '<option value="MT">Montana</option>' +
-                    '<option value="NE">Nebraska</option>' +
-                    '<option value="NV">Nevada</option>' +
-                    '<option value="NH">New Hampshire</option>' +
-                    '<option value="NJ">New Jersey</option>' +
-                    '<option value="NM">New Mexico</option>' +
-                    '<option value="NY">New York</option>' +
-                    '<option value="NC">North Carolina</option>' +
-                    '<option value="ND">North Dakota</option>' +
-                    '<option value="OH">Ohio</option>' +
-                    '<option value="OK">Oklahoma</option>' +
-                    '<option value="OR">Oregon</option>' +
-                    '<option value="PA">Pennsylvania</option>' +
-                    '<option value="RI">Rhode Island</option>' +
-                    '<option value="SC">South Carolina</option>' +
-                    '<option value="SD">South Dakota</option>' +
-                    '<option value="TN">Tennessee</option>' +
-                    '<option value="TX">Texas</option>' +
-                    '<option value="UT">Utah</option>' +
-                    '<option value="VT">Vermont</option>' +
-                    '<option value="VA">Virginia</option>' +
-                    '<option value="WA">Washington</option>' +
-                    '<option value="WV">West Virginia</option>' +
-                    '<option value="WI">Wisconsin</option>' +
-                    '<option value="WY">Wyoming</option>' +
-                    '</select>';
-
-                var canadaProvinces = '<select id="state" type="text" class="form-control required" placeholder="" name="state">' +
-                    '<option value="">Province</option>' +
-                    '<option value="AB">Alberta</option>' +
-                    '<option value="BC">British Columbia</option>' +
-                    '<option value="MB">Manitoba</option>' +
-                    '<option value="NB">New Brunswick</option>' +
-                    '<option value="NL">Newfoundland and Labrador</option>' +
-                    '<option value="NS">Nova Scotia</option>' +
-                    '<option value="ON">Ontario</option>' +
-                    '<option value="PE">Prince Edward Island</option>' +
-                    '<option value="QC">Quebec</option>' +
-                    '<option value="SK">Saskatchewan</option>' +
-                    '<option value="NT">Northwest Territories</option>' +
-                    '<option value="NU">Nunavut</option>' +
-                    '<option value="YT">Yukon</option>' +
-                    '</select>';
-
-                var mexicoProvinces = '<select id="state" type="text" class="form-control required" placeholder="" name="state">' +
-                    '<option value="">State</option>' +
-                    '<option value="DIF">Distrito Federal</option>' +
-                    '<option value="AGS">Aguascalientes</option>' +
-                    '<option value="BCN">Baja California</option>' +
-                    '<option value="BCS">Baja California Sur</option>' +
-                    '<option value="CAM">Campeche</option>' +
-                    '<option value="CHP">Chiapas</option>' +
-                    '<option value="CHI">Chihuahua</option>' +
-                    '<option value="COA">Coahuila</option>' +
-                    '<option value="COL">Colima</option>' +
-                    '<option value="DUR">Durango</option>' +
-                    '<option value="GTO">Guanajuato</option>' +
-                    '<option value="GRO">Guerrero</option>' +
-                    '<option value="HGO">Hidalgo</option>' +
-                    '<option value="JAL">Jalisco</option>' +
-                    '<option value="MEX">M&eacute;xico</option>' +
-                    '<option value="MIC">Michoac&aacute;n</option>' +
-                    '<option value="MOR">Morelos</option>' +
-                    '<option value="NAY">Nayarit</option>' +
-                    '<option value="NLE">Nuevo Le&oacute;n</option>' +
-                    '<option value="OAX">Oaxaca</option>' +
-                    '<option value="PUE">Puebla</option>' +
-                    '<option value="QRO">Quer&eacute;taro</option>' +
-                    '<option value="ROO">Quintana Roo</option>' +
-                    '<option value="SLP">San Luis Potos&iacute;</option>' +
-                    '<option value="SIN">Sinaloa</option>' +
-                    '<option value="SON">Sonora</option>' +
-                    '<option value="TAB">Tabasco</option>' +
-                    '<option value="TAM">Tamaulipas</option>' +
-                    '<option value="TLX">Tlaxcala</option>' +
-                    '<option value="VER">Veracruz</option>' +
-                    '<option value="YUC">Yucat&aacute;n</option>' +
-                    '<option value="ZAC">Zacatecas</option>' +
-                    '</select>';
-
-                var counrtyRegion = '<input id="state" type="text" class="form-control" placeholder="Region" name="state">';
-
-
-                if (country == "United States") {
-                    $('#zip').attr('placeholder', 'Zip/Postal');
-                    $('#state').replaceWith(usStates);
-                } else if (country == "Canada") {
-                    $('#zip').attr('placeholder', 'Postal Code');
-                    $('#state').replaceWith(canadaProvinces);
-                } else if (country == "Mexico") {
-                    $('#zip').attr('placeholder', 'Zip/Postal');
-                    $('#state').replaceWith(mexicoProvinces);
-                } else {
-                    $('#zip').attr('placeholder', 'Postal Code');
-                    $('#state').replaceWith(counrtyRegion);
-                }
-            });
 
             $('.datepicker').periodpicker({
                 likeXDSoftDateTimePicker: true,
@@ -512,41 +358,57 @@ $config = $wpp_config['footer'];
                 $(this).parent().find('.datepicker').periodpicker('show');
             });
 
-            // Обработчик клика по тексту "I agree"
-            $('.agreed__text').click(function() {
-                const $checkbox = $(this).siblings('#submit_agree');
-                const $checkmark = $(this).siblings('.agreed__checkbox').find('span');
-
-                // Переключаем состояние чекбокса
-                $checkbox.prop('checked', !$checkbox.prop('checked'));
-
-                // Анимация галочки
-                if ($checkbox.is(':checked')) {
-                    $checkmark.addClass('agreed__checked');
-                    $(this).css('font-weight', 'bold');
-                } else {
-                    $checkmark.removeClass('agreed__checked');
-                    $(this).css('font-weight', 'normal');
-                }
-            });
-
-            // Обработчик клика по самой галочке
-            $('.agreed__checkbox').click(function(e) {
-                e.preventDefault();
-                $(this).siblings('.agreed__text').trigger('click');
-            });
-
-            // Валидация при отправке формы
-         /*   $('#reservation-form').on('submit', function(e) {
-                if (!$('#submit_agree').is(':checked')) {
-                    e.preventDefault();
-                    $('.agreed__text').css('color', 'red').effect('shake', { distance: 5, times: 2 }, 300);
-                    $('#total-error').text('You must agree to the terms').show();
-                }
-            });*/
         })
     </script>
 <?php } ?>
+<script>
+    // Проверяем поддержку IntersectionObserver
+    if ('IntersectionObserver' in window) {
+        const lazyImages = document.querySelectorAll('.lazy-img');
+
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy-img');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+    } else {
+        // Фолбэк для старых браузеров
+        lazyLoadFallback();
+    }
+
+    function lazyLoadFallback() {
+        const lazyImages = document.querySelectorAll('.lazy-img');
+        let lazyLoadTimeout;
+
+        function lazyLoad() {
+            if (lazyLoadTimeout) {
+                clearTimeout(lazyLoadTimeout);
+            }
+
+            lazyLoadTimeout = setTimeout(() => {
+                const scrollTop = window.pageYOffset;
+                lazyImages.forEach(img => {
+                    if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy-img');
+                    }
+                });
+            }, 200);
+        }
+
+        document.addEventListener('scroll', lazyLoad);
+        window.addEventListener('resize', lazyLoad);
+        window.addEventListener('orientationchange', lazyLoad);
+        lazyLoad(); // Первоначальная загрузка видимых изображений
+    }
+</script>
 
 </body>
 </html>

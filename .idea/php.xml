@@ -10,13 +10,6 @@
     <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
-  <component name="PhpIncludePathManager">
-    <include_path>
-      <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/digitalstars/database" />
-      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
-    </include_path>
-  </component>
   <component name="PhpProjectServersManager">
     <servers>
       <server host="http://seattleelitetowncar.coms/" id="267f596d-2649-4c4e-87c1-92e2a06c5131" name="http://seattleelitetowncar.coms/" use_path_mappings="true" />

@@ -24,7 +24,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                         <div class="col-sm-6 col-md-4">
                             <div class="row">
                                 <div class="col-xs-1 col-xs-offset-1">
-                                    <div class="contacts-info__item"><img src="theme/images/icons/con_phone_icon.png">
+                                    <div class="contacts-info__item"><img src="assets/images/icons/con_phone_icon.png">
                                     </div>
                                 </div>
                                 <div class="col-xs-9">
@@ -36,7 +36,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                         <div class="col-sm-6 col-md-4">
                             <div class="row">
                                 <div class="col-xs-1 col-xs-offset-1">
-                                    <div class="contacts-info__item"><img src="theme/images/icons/con_phone_icon.png">
+                                    <div class="contacts-info__item"><img src="assets/images/icons/con_phone_icon.png">
                                     </div>
                                 </div>
                                 <div class="col-xs-9">
@@ -50,7 +50,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                         <div class="col-sm-6 col-md-4">
                             <div class="row">
                                 <div class="col-xs-1 col-xs-offset-1">
-                                    <div class="contacts-info__item"><img src="theme/images/icons/con_mail_icon.png">
+                                    <div class="contacts-info__item"><img src="assets/images/icons/con_mail_icon.png">
                                     </div>
                                 </div>
                                 <div class="col-xs-9">
@@ -123,7 +123,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                     <div class="row">
                                         <div class="col-xs-6">
                                             <div class="form-group datepicker-wrapper">
-                                                <img class="date-icon calendar" src="theme/images/icons/calendar.png">
+                                                <img class="date-icon calendar" src="assets/images/icons/calendar.png">
                                                 <label for="date" class="sr-only"></label>
                                                 <input id="date" type="text"
                                                        class="form-control datetime datepicker required"
@@ -133,7 +133,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                         </div>
                                         <div class="col-xs-6">
                                             <div class="form-group">
-                                                <img class="date-icon" src="theme/images/icons/calendar-time.png">
+                                                <img class="date-icon" src="assets/images/icons/calendar-time.png">
                                                 <label for="time" class="sr-only"></label>
                                                 <input id="time" type="text"
                                                        class="form-control datetime datetimer required"
@@ -173,7 +173,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
 
             // Показываем индикатор загрузки
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner">Sending...</span>';
+            submitBtn.innerHTML = '<span class="spinner"></span>Sending...';
             messageEl.style.display = 'none';
 
             // Собираем данные формы

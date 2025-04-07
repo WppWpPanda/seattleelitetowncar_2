@@ -1,0 +1,15 @@
+Error: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+Data: Array
+(
+    [name] => marina
+    [company] => Test buisness 1
+    [phone] => 0994544330
+    [email] => webandad@gmail.com
+    [brief] => ttytyryrtyrt
+    [vehicle] => Luxury Sedan
+    [service] => Point to point
+    [date] => 04/08/2025
+    [time] => 09:56 AM
+    [ip] => 127.0.0.1
+    [timestamp] => 2025-04-03 11:57:08
+)

@@ -36,7 +36,7 @@ class Auth {
         $user = $this->db->query("SELECT * FROM users WHERE email = ?s", [$email])->fetch();
 
         if (!$user) {
-            throw new Exception("Неверный email");
+            throw new Exception("Error Email");
         }
 
         // Если пароль отсутствует (NULL или пустая строка)
@@ -57,7 +57,7 @@ class Auth {
         $pwd_peppered = hash_hmac("sha256", $password, STR);
 
         if (!password_verify($pwd_peppered, $user['password'])) {
-            throw new Exception("Неверный пароль");
+            throw new Exception("Error Password");
         }
 
         // Стартуем сессию если еще не начата
@@ -162,6 +162,33 @@ class Auth {
             while ($row = $result->fetch()) {
                 // Десериализуем данные заказов
                 $row['orders'] = unserialize($row['orders']);
+                $orders[] = $row;
+            }
+
+            return $orders;
+        } catch (Exception $e) {
+            error_log("Failed to get old orders for user {$user_id}: " . $e->getMessage());
+            return false;
+        }
+    }
+
+/**
+* Получает все заказы пользователя из таблицы new_orders
+*
+* @param int $user_id ID пользователя
+* @return array|false Массив заказов или false при ошибке
+*/
+    public function getNewOrdersByUserId($user_id) {
+        try {
+            $result = $this->db->query(
+                "SELECT * FROM new_orders WHERE user_ID = ?s ORDER BY created_at DESC",
+                [$user_id]
+            );
+
+            $orders = [];
+            while ($row = $result->fetch()) {
+                // Десериализуем данные заказов
+                $row['orders'] = unserialize($row['order_data']);
                 $orders[] = $row;
             }
 

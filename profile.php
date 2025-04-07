@@ -8,7 +8,7 @@ if (!empty($_GET['logout'])) {
 }
 
 if (!$auth->isLoggedIn()) {
-    header("Location: login.php");
+    header("Location: /login" . PHP );
     exit;
 }
 
@@ -253,7 +253,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                                        value="<?php echo !empty($user['cvv']) ? $user['cvv'] : ''; ?>">
                                             </div>
                                             <div class="col-xs-3">
-                                                <img src="theme/images/icons/contacts_cvv.png" class="img-responsive">
+                                                <img src="assets/images/icons/contacts_cvv.png" class="img-responsive">
                                             </div>
                                         </div>
                                     </div>
@@ -277,6 +277,8 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
 var_dump($user_id);
 
 $old_orders = $auth->getOldOrdersByUserId($user_id);
+$new_orders = $auth->getNewOrdersByUserId($user_id);
+
 
 $orders = array();
 $i = 1;
@@ -346,6 +348,22 @@ if (!empty($old_orders) && !empty($old_orders[0]) && !empty($old_orders[0]['orde
     }
 }
 
+
+if(!empty($new_orders)){
+    foreach ($new_orders as $n_order) {
+
+
+        $title = "Order date: " . formatDateTime($n_order['created_at']);
+
+        $orders[] = [
+            'id' => 'faq-' . $i,
+            'question' => $title,
+            'answer' => formatOrderDetails($n_order['orders'])
+        ];
+
+        $i++;
+    }
+}
 
 $faq_settings = array(
     'faq_items' => $orders,

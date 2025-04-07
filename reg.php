@@ -192,7 +192,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                                        name="cvv">
                                             </div>
                                             <div class="col-xs-3">
-                                                <img src="theme/images/icons/contacts_cvv.png" class="img-responsive">
+                                                <img src="assets/images/icons/contacts_cvv.png" class="img-responsive">
                                             </div>
                                         </div>
                                     </div>

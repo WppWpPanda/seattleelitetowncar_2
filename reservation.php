@@ -23,7 +23,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                         <div class="col-sm-6 col-md-4">
                             <div class="row">
                                 <div class="col-xs-1 col-xs-offset-1">
-                                    <div class="contacts-info__item"><img src="theme/images/icons/con_phone_icon.png">
+                                    <div class="contacts-info__item"><img src="assets/images/icons/con_phone_icon.png">
                                     </div>
                                 </div>
                                 <div class="col-xs-9">
@@ -35,7 +35,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                         <div class="col-sm-6 col-md-4">
                             <div class="row">
                                 <div class="col-xs-1 col-xs-offset-1">
-                                    <div class="contacts-info__item"><img src="theme/images/icons/con_phone_icon.png">
+                                    <div class="contacts-info__item"><img src="assets/images/icons/con_phone_icon.png">
                                     </div>
                                 </div>
                                 <div class="col-xs-9">
@@ -49,7 +49,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                         <div class="col-sm-6 col-md-4">
                             <div class="row">
                                 <div class="col-xs-1 col-xs-offset-1">
-                                    <div class="contacts-info__item"><img src="theme/images/icons/con_mail_icon.png">
+                                    <div class="contacts-info__item"><img src="assets/images/icons/con_mail_icon.png">
                                     </div>
                                 </div>
                                 <div class="col-xs-9">
@@ -140,24 +140,21 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="pickup"><span class="pickup__text"> Pickup :</span>
-                                            <div class="agreed">
-                                                <div class="agreed__checkbox"><span class=""></span></div>
-                                                <div class="agreed__text">Use the address information listed above</div>
-                                            </div>
-                                        </div>
-                                        <div class="label-wrap label-wrap--left">
-                                            <label class="btn active custom-radio-btn">
-                                                <input type="radio" data-show="#pickup_street"
-                                                       data-hide="#pickup_airport" name='pickup' checked value="street"><i
-                                                        class="fa fa-circle-o"></i><i
-                                                        class="fa fa-dot-circle-o"></i><span>Street address</span>
+                                        <div class="pickup">
+                                            <span class="pickup__text"> Pickup :</span>
+                                            <label class="wpp-check">
+                                                <input type="checkbox" name="used_address">
+                                                <span class="agreed__text">Use the address information listed above</span>
                                             </label>
-                                            <label class="btn custom-radio-btn">
+                                        </div>
+                                        <div class="label-wrap label-wrap--left wpp-radio-wrap">
+                                            <label class="btn active custom-radio-btn wpp-radio">
+                                                <input type="radio" data-show="#pickup_street"
+                                                       data-hide="#pickup_airport" name='pickup' checked value="street"><span>Street address</span>
+                                            </label>
+                                            <label class="btn custom-radio-btn wpp-radio">
                                                 <input type="radio" data-show="#pickup_airport"
-                                                       data-hide="#pickup_street" name='pickup' value="airport"><i
-                                                        class="fa fa-circle-o "></i><i
-                                                        class="fa fa-dot-circle-o"></i><span>Airport</span>
+                                                       data-hide="#pickup_street" name='pickup' value="airport"><span>Airport</span>
                                             </label>
                                         </div>
                                     </div>
@@ -211,7 +208,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                     <div class="row">
                                         <div class="col-xs-6">
                                             <div class="form-group">
-                                                <img class="date-icon calendar" src="theme/images/icons/calendar.png">
+                                                <img class="date-icon calendar" src="assets/images/icons/calendar.png">
                                                 <label for="date" class="sr-only"></label>
                                                 <input id="date" type="text"
                                                        class="form-control datetime datepicker required"
@@ -220,7 +217,7 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                         </div>
                                         <div class="col-xs-6">
                                             <div class="form-group">
-                                                <img class="date-icon" src="theme/images/icons/calendar-time.png">
+                                                <img class="date-icon" src="assets/images/icons/calendar-time.png">
                                                 <label for="time" class="sr-only"></label>
                                                 <input id="time" type="text"
                                                        class="form-control datetime datetimer required"
@@ -248,19 +245,16 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                     <div class="form-group">
                                         <div class="pickup"><span class="pickup__text"> Destination: </span>
                                         </div>
-                                        <div class="label-wrap label-wrap--left">
-                                            <label class="btn active custom-radio-btn">
+                                        <div class="label-wrap label-wrap--left wpp-radio-wrap">
+                                            <label class="btn active custom-radio-btn wpp-radio">
                                                 <input id="pickup_radio" data-show="#destination_street"
                                                        data-hide="#destination_airport" type="radio" name='destination'
-                                                       checked value="street"><i
-                                                        class="fa fa-circle-o"></i><i
-                                                        class="fa fa-dot-circle-o"></i><span>Street address</span>
+                                                       checked value="street" class=""><span>Street address</span>
                                             </label>
-                                            <label class="btn custom-radio-btn">
+                                            <label class="btn custom-radio-btn wpp-radio">
                                                 <input id="dest_radio" data-show="#destination_airport"
                                                        data-hide="#destination_street" type="radio" name='destination'
-                                                       value="airport"><i class="fa fa-circle-o "></i><i
-                                                        class="fa fa-dot-circle-o"></i><span>Airport</span>
+                                                       value="airport"><span>Airport</span>
                                             </label>
                                         </div>
                                     </div>
@@ -305,21 +299,15 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                             <h2 class="reservation-title"><span>Payment Details</span></h2>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <div class="label-wrap form-group">
-                                        <label class="btn active custom-radio-btn">
-                                            <input type="radio" name='payment' checked value="credit_card"><i
-                                                    class="fa fa-circle-o"></i><i
-                                                    class="fa fa-dot-circle-o"></i><span>Credit Card</span>
+                                    <div class="label-wrap form-group wpp-radio-wrap">
+                                        <label class="btn active custom-radio-btn wpp-radio">
+                                            <input type="radio" name='payment' checked value="credit_card"><span>Credit Card</span>
                                         </label>
-                                        <label class="btn custom-radio-btn">
-                                            <input type="radio" name='payment' value="direct_billing"><i
-                                                    class="fa fa-circle-o "></i><i
-                                                    class="fa fa-dot-circle-o"></i><span>Direct Billing</span>
+                                        <label class="btn custom-radio-btn wpp-radio">
+                                            <input type="radio" name='payment' value="direct_billing"><span>Direct Billing</span>
                                         </label>
-                                        <label class="btn custom-radio-btn">
-                                            <input type="radio" name='payment' value="cash"><i
-                                                    class="fa fa-circle-o "></i><i
-                                                    class="fa fa-dot-circle-o"></i><span>Cash/Check(WA State Only)</span>
+                                        <label class="btn custom-radio-btn wpp-radio">
+                                            <input type="radio" name='payment' value="cash"><span>Cash/Check(WA State Only)</span>
                                         </label>
                                     </div>
                                 </div>
@@ -354,14 +342,16 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                                    placeholder="CVV" name="cvv">
                                         </div>
                                         <div class="col-xs-3">
-                                            <img src="theme/images/icons/contacts_cvv.png" class="img-responsive">
+                                            <img src="assets/images/icons/contacts_cvv.png" class="img-responsive">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group agreed pyment_by_card" id="billing-same">
-                                <div class="agreed__checkbox"><span class="agreed__checked"></span></div>
-                                <div class="agreed__text">Billing same as in passenger's info</div>
+                                <label class="wpp-check">
+                                    <input type="checkbox" name="bill_same">
+                                    <span class="agreed__text">Billing same as in passenger's info</span>
+                                </label>
                             </div>
                             <div class="row hidden pyment_by_card">
                                 <div class="col-sm-6">
@@ -471,12 +461,13 @@ defined('ABS_PATH' or exit('No direct script access allowed')); ?>
                                         to be used for the
                                         requested services.<br>
 
-                                        <div class="agreed">
-                                            <label for="submit_agree" class="agreed__checkbox"><span
-                                                        class=""></span></label>
-                                            <div class="agreed__text">I agree</div>
-                                            <input id="submit_agree" type="checkbox" class="hidden" required>
-                                        </div>
+
+                                        <label class="wpp-check">
+                                            <input name="i_agree" type="checkbox"  required>
+                                            <span class="agreed__text">I agree</span>
+
+                                        </label>
+
                                     </div>
                                 </div>
                             </div>

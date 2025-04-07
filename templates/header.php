@@ -11,6 +11,10 @@ $config = $wpp_config['header'];
     <meta name="keywords" content="<?php echo htmlspecialchars($config['meta']['keywords']); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo htmlspecialchars($config['meta']['title']); ?></title>
+    <link rel="icon" href="/uploads/icons/cropped-logo_n-32x32.png" sizes="32x32">
+    <link rel="icon" href="/uploads/icons/cropped-logo_n-192x192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="/uploads/icons/cropped-logo_n-180x180.png">
+    <meta name="msapplication-TileImage" content="/uploads/icons/cropped-logo_n-270x270.png">
 
     <?php foreach ($config['assets']['styles'] as $style): ?>
         <link rel="stylesheet" type="text/css" href="<?php echo htmlspecialchars($style); ?>">
@@ -34,7 +38,7 @@ $config = $wpp_config['header'];
     <?php endif; ?>
 </head>
 
-<body>
+<body class="your-class <?php echo is_mobile_device() ? 'wpp-mobile' : ''; ?>">
 <nav class="navbar navbar-default my-navbar"
      aria-label="<?php echo htmlspecialchars($config['navigation']['main']['title']); ?>">
     <div class="content-wrap">
@@ -42,23 +46,13 @@ $config = $wpp_config['header'];
             <a class="navbar-brand brand"
                href="<?php echo htmlspecialchars($config['navigation']['logo']['home_url']); ?>"
                title="<?php echo htmlspecialchars($config['navigation']['logo']['title']); ?>">
-                <img class="brand__img" src="<?php echo htmlspecialchars($config['assets']['logo']['src']); ?>"
+                <img class="brand__img" src="<?php echo  ! is_mobile_device() ? htmlspecialchars($config['assets']['logo']['src']) : '/uploads/icons/mobile.logo.png'; ?>"
                      alt="<?php echo htmlspecialchars($config['assets']['logo']['alt']); ?>"
                      aria-hidden="false">
             </a>
 
-            <button type="button" class="navbar-toggle collapsed my-toggle"
-                    data-toggle="collapse"
-                    data-target="#navbar-limousine"
-                    aria-expanded="false"
-                    aria-controls="navbar-limousine"
-                    aria-label="<?php echo htmlspecialchars($config['navigation']['main']['toggle_label']); ?>">
-                <span class="sr-only">Open main menu</span>
-                <span class="icon-bar" aria-hidden="true"></span>
-                <span class="icon-bar" aria-hidden="true"></span>
-                <span class="icon-bar" aria-hidden="true"></span>
-            </button>
 
+            <a href="" class="class="visible-xs">Reserv</a>
             <ul class="phones visible-xs"
                 aria-label="<?php echo htmlspecialchars($config['navigation']['phones']['section_label']); ?>">
                 <?php foreach ($config['navigation']['phones'] as $key => $phone): ?>
@@ -74,6 +68,19 @@ $config = $wpp_config['header'];
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
+
+            <button type="button" class="navbar-toggle collapsed my-toggle"
+                    data-toggle="collapse"
+                    data-target="#navbar-limousine"
+                    aria-expanded="false"
+                    aria-controls="navbar-limousine"
+                    aria-label="<?php echo htmlspecialchars($config['navigation']['main']['toggle_label']); ?>">
+                <span class="sr-only">Open main menu</span>
+                <span class="icon-bar" aria-hidden="true"></span>
+                <span class="icon-bar" aria-hidden="true"></span>
+                <span class="icon-bar" aria-hidden="true"></span>
+            </button>
+
         </div>
 
         <div class="collapse navbar-collapse my-collapse" id="navbar-limousine">
@@ -123,18 +130,6 @@ $config = $wpp_config['header'];
                 <?php endforeach; ?>
             </ul>
 
-            <div class="top_login" role="region"
-                 aria-label="<?php echo htmlspecialchars($config['navigation']['user']['section_label']); ?>">
-                <a href="<?php echo htmlspecialchars($config['navigation']['user']['login']['url']); ?>" role="button">
-                    <?php echo htmlspecialchars($config['navigation']['user']['login']['text']); ?>
-                </a>
-                <?php if(!empty($config['navigation']['user']['register'])) { ?>
-                <a href="<?php echo htmlspecialchars($config['navigation']['user']['register']['url']); ?>"
-                   role="button">
-                    <?php echo htmlspecialchars($config['navigation']['user']['register']['text']); ?>
-                </a>
-                <?php } ?>
-            </div>
         </div>
     </div>
 </nav>

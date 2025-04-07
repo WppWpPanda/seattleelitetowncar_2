@@ -28,7 +28,7 @@ $config = [
             [
                 'title' => 'Airport',
                 'subtitle' => 'services',
-                'image' => 'uploads/services/img-01.jpg',
+                'image' => '/uploads/services/img-01.jpg',
                 'alt' => 'Airport car services',
                 'url' => 'services' . PHP,
                 'button_text' => 'See more'
@@ -36,7 +36,7 @@ $config = [
             [
                 'title' => 'Corporate',
                 'subtitle' => 'services',
-                'image' => 'uploads/services/img-03.jpg',
+                'image' => '/uploads/services/img-03.jpg',
                 'alt' => 'Corporate car services',
                 'url' => 'services' . PHP,
                 'button_text' => 'See more'
@@ -44,7 +44,7 @@ $config = [
             [
                 'title' => 'Weddings',
                 'subtitle' => 'services',
-                'image' => 'uploads/services/img-02.jpg',
+                'image' => '/uploads/services/img-02.jpg',
                 'alt' => 'Weddings car services',
                 'url' => 'services' . PHP,
                 'button_text' => 'See more'
@@ -52,7 +52,7 @@ $config = [
             [
                 'title' => 'Proms',
                 'subtitle' => 'services',
-                'image' => 'uploads/services/img-04.png',
+                'image' => '/uploads/services/img-04.png',
                 'alt' => 'Proms car services',
                 'url' => 'services' . PHP,
                 'button_text' => 'See more'
@@ -60,7 +60,7 @@ $config = [
         ],
         'scroll_down' => [
             'text' => 'scroll down',
-            'url' => 'index' . PHP  . '#fleet',
+            'url' => '/#fleet',
             'aria_label' => 'Scroll down to fleet section'
         ]
     ],
@@ -69,37 +69,11 @@ $config = [
         'description' => 'TAKE A LOOK AT OUR VEHICLES',
         'tabs' => [
             [
-                'id' => 'fleetbuses',
-                'title' => 'Luxury Buses',
-                'items' => [
-                    [
-                        'image' => 'uploads/fleetcategories/img2.png',
-                        'alt' => 'Executive mini coach bus',
-                        'description' => '<strong>EXECUTIVE MINI COACH BUS</strong> | 24 PASSENGER',
-                        'url' => 'fleet/buses' . PHP,
-                        'button_text' => 'See All'
-                    ]
-                ]
-            ],
-            [
-                'id' => 'fleetlimos',
-                'title' => 'Luxury Limousines',
-                'items' => [
-                    [
-                        'image' => 'uploads/fleetcategories/img1.png',
-                        'alt' => 'Cadillac limousine',
-                        'description' => '<strong>Cadillac</strong> Limousine',
-                        'url' => 'fleet/limos' . PHP,
-                        'button_text' => 'See All'
-                    ]
-                ]
-            ],
-            [
                 'id' => 'fleetsedans',
                 'title' => 'Luxury Sedans',
                 'items' => [
                     [
-                        'image' => 'uploads/fleetcategories/img5.png',
+                        'image' => SITE_URL . 'uploads/fleetcategories/img5.png',
                         'alt' => 'Lincoln MKT',
                         'description' => 'LINCOLN MKT',
                         'url' => 'fleet/sedans' . PHP,
@@ -112,7 +86,7 @@ $config = [
                 'title' => 'Luxury Suvs',
                 'items' => [
                     [
-                        'image' => 'uploads/fleetcategories/img4.png',
+                        'image' => SITE_URL . 'uploads/fleetcategories/img4.png',
                         'alt' => 'Cadillac escalade',
                         'description' => '<strong>cadillac</strong> escalade',
                         'url' => 'fleet/suvs' . PHP,
@@ -125,18 +99,48 @@ $config = [
                 'title' => 'Luxury Van',
                 'items' => [
                     [
-                        'image' => 'uploads/fleetcategories/img3.png',
+                        'image' => SITE_URL . 'uploads/fleetcategories/img3.png',
                         'alt' => 'Mercedes Sprinter',
                         'description' => '<strong>Mercedes</strong> Sprinter',
                         'url' => 'fleet/vans' . PHP,
                         'button_text' => 'See All'
                     ]
                 ]
-            ]
+            ],
+            [
+                'id' => 'fleetlimos',
+                'title' => 'Luxury Limousines',
+                'items' => [
+                    [
+                        'image' => SITE_URL . 'uploads/fleetcategories/img1.png',
+                        'alt' => 'Cadillac limousine',
+                        'description' => '<strong>Cadillac</strong> Limousine',
+                        'url' => 'fleet/limos' . PHP,
+                        'button_text' => 'See All'
+                    ]
+                ]
+            ],
+            [
+                'id' => 'fleetbuses',
+                'title' => 'Luxury Buses',
+                'items' => [
+                    [
+                        'image' => SITE_URL . 'uploads/fleetcategories/img2.png',
+                        'alt' => 'Executive mini coach bus',
+                        'description' => '<strong>EXECUTIVE MINI COACH BUS</strong> 24 PASSENGER',
+                        'url' => 'fleet/buses' . PHP,
+                        'button_text' => 'See All'
+                    ]
+                ]
+            ],
+        
+            
+            
+           
         ],
         'scroll_down' => [
             'text' => 'scroll down',
-            'url' => 'index' . PHP  . '#about',
+            'url' =>  '/#about',
             'aria_label' => 'Scroll down to about section'
         ]
     ],
@@ -157,34 +161,38 @@ $config = [
         'buttons' => [
             'read_more' => [
                 'text' => 'Read more',
-                'url' => 'index' . PHP  . '#',
+                'url' => 'services' . PHP,
                 'aria_label' => 'Read more about us'
             ]
         ],
         'links' => [
             [
                 'text' => 'Articles',
-                'url' => 'seattleelitetowncar.php?Action=1&k=seattle-limo-service.html'
+                'url' => '/blog'
             ],
             [
                 'text' => 'News',
-                'url' => 'seattleelitetowncar.php?Action=2&k=seattle-town-car-service.html'
+                'url' => '/blog'
             ]
         ],
         'scroll_down' => [
             'text' => 'scroll down',
-            'url' => 'index' . PHP  . '#footer',
+            'url' => '/#footer',
             'aria_label' => 'Scroll down to footer'
         ]
     ],
     'background' => [
         'images' => [
-            'theme/images/bg.jpg'
+            'assets/images/bg.jpg'
         ]
     ]
 ];
 ?>
-
+<style>
+       .fleet-tab-content__wrap .slick-track, .fleet-tab-content__wrap .slick-track .slick-slide{
+                width: 100% !important;
+            }
+</style>
     <!-- Home Section -->
     <section id="home" aria-label="Home section">
         <div class="container-fluid">
@@ -192,7 +200,7 @@ $config = [
                 <div class="home">
                     <h2 class="home__top animated zoomIn"><?php echo htmlspecialchars($config['home']['welcome']); ?></h2>
                     <h1 class="home__title animated zoomIn"><?php echo htmlspecialchars($config['home']['title']); ?></h1>
-                    <h3 class="home__text animated zoomIn"><?php echo htmlspecialchars($config['home']['description']); ?></h3>
+                    <h2 class="home__text animated zoomIn"><?php echo htmlspecialchars($config['home']['description']); ?></h2>
 
                     <a href="<?php echo htmlspecialchars($config['home']['buttons']['scroll_down']['url']); ?>"
                        class="scroll-down"
@@ -203,7 +211,7 @@ $config = [
 
                     <a class="svg-wrapper"
                        href="<?php echo htmlspecialchars($config['home']['buttons']['reserve']['url']); ?>"
-                       aria-label="<?php echo htmlspecialchars($config['home']['buttons']['reserve']['aria_label']); ?>">
+                       aria-label="<?php echo htmlspecialchars($config['home']['buttons']['reserve']['aria_label']); ?> <?php echo htmlspecialchars($config['home']['buttons']['reserve']['text']); ?>">
                         <svg height="60" width="280" xmlns="">
                             <rect class="shape"/>
                         </svg>
@@ -308,13 +316,13 @@ $config = [
         <div class="">
             <ul id="tab-caption" class="nav nav-tabs nav-justified fleet-nav-tabs" role="tablist">
                 <?php foreach ($config['fleet']['tabs'] as $tab): ?>
-                    <li role="presentation" class="<?php echo ($tab['id'] === 'fleetbuses') ? 'active' : ''; ?>">
+                    <li role="presentation" class="<?php echo ($tab['id'] === 'fleetsedans') ? 'active' : ''; ?>">
                         <a class="fleet-nav-tabs__link"
                            href="#<?php echo htmlspecialchars($tab['id']); ?>"
                            aria-controls="<?php echo htmlspecialchars($tab['id']); ?>"
                            role="tab"
                            data-toggle="tab"
-                           aria-selected="<?php echo ($tab['id'] === 'fleetbuses') ? 'true' : 'false'; ?>">
+                           aria-selected="<?php echo ($tab['id'] === 'fleetsedans') ? 'true' : 'false'; ?>">
                             <?php echo htmlspecialchars($tab['title']); ?>
                         </a>
                     </li>
@@ -325,7 +333,7 @@ $config = [
         <div class="tab-content fleet-tab-content">
             <?php foreach ($config['fleet']['tabs'] as $index => $tab): ?>
                 <div role="tabpanel"
-                     class="tab-pane fade <?php echo ($tab['id'] === 'fleetbuses') ? 'in active' : ''; ?>"
+                     class="tab-pane fade <?php echo ($tab['id'] === 'fleetsedans') ? 'in active' : ''; ?>"
                      id="<?php echo htmlspecialchars($tab['id']); ?>">
                     <div class="container">
                         <div class="fleet-tab-content__wrap">
@@ -353,7 +361,7 @@ $config = [
 
                     <div class="fleet-tab-content__footer" id="d-0<?php echo $index; ?>">
                         <a href="<?php echo htmlspecialchars($item['url']); ?>" class="btn btn-grey"
-                           aria-label="View all <?php echo htmlspecialchars($tab['title']); ?>">
+                           aria-label="<?php echo htmlspecialchars($item['button_text']); ?> <?php echo htmlspecialchars($tab['title']); ?>">
                             <?php echo htmlspecialchars($item['button_text']); ?>
                         </a>
                     </div>
@@ -409,7 +417,7 @@ $config = [
         </div>
 
         <a href="<?php echo htmlspecialchars($config['about']['scroll_down']['url']); ?>"
-           class="scroll-down"
+           class="scroll-down animated bounce full-visible"
            aria-label="<?php echo htmlspecialchars($config['about']['scroll_down']['aria_label']); ?>">
             <?php echo htmlspecialchars($config['about']['scroll_down']['text']); ?>
             <i class="fa fa-angle-down" aria-hidden="true"></i>
